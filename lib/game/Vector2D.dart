@@ -16,5 +16,17 @@ class Vector2D{
     return sqrt(pow(_x,2)+pow(_y, 2));
   }
 
+  Vector2D operator +(Vector2D other){
+    return Vector2D(_x+other.getX(), _y+other.getY());
+  }
 
+  Vector2D operator -(Vector2D other){
+    return Vector2D(_x-other.getX(), _y-other.getY());
+  }
+  Vector2D operator *(num other){
+    return Vector2D(_x*other, _y*other);
+  }
+  Vector2D operator /(num other){
+    return Vector2D(_x/other, _y/other);
+  }
 }

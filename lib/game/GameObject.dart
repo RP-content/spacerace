@@ -20,7 +20,7 @@ abstract class GameObject{
   }
 
   void start();
-  void update();
+  void update(double delta);
   void end();
 
 

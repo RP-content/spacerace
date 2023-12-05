@@ -13,7 +13,7 @@ class Player extends GameObject{
   }
 
   @override
-  void update() {
+  void update(double delta) {
     // TODO: implement update
   }
 
