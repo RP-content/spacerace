@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Text(
-              'Earned: \$100', // Replace with your actual amount
+              'earned'.tr, // Replace with your actual amount
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -42,7 +43,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Fire Types', style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
                         // Add your fire types selection widgets here
                       ],
                     ),
@@ -54,7 +55,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('Ship Designs', style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('shipDesigns'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
                         // Add your ship designs selection widgets here
                       ],
                     ),
@@ -71,7 +72,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
               onPressed: () {
                 Navigator.pop(context); // Return to the main menu
               },
-              child: Text('Back to Menu', style: TextStyle(color: Colors.black)),
+              child: Text('backToMenu'.tr, style: TextStyle(color: Colors.black)),
             ),
           ),
         ],

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'customize_menu.dart';
+
 
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
+
 
   @override
   _MainMenuState createState() => _MainMenuState();
@@ -29,7 +33,7 @@ class _MainMenuState extends State<MainMenu> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'Earned: \$100', // Replace with your actual amount
+                'earned'.tr, // Replace with your actual amount
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -92,7 +96,7 @@ class _MainMenuState extends State<MainMenu> {
                 onPressed: () {
                   // Add your start game button action here
                 },
-                child: Text('Start Game', style: TextStyle(color: Colors.black)),
+                child: Text('startGame'.tr, style: TextStyle(color: Colors.black)),
               ),
             ),
           ),
@@ -111,85 +115,113 @@ class _MainMenuState extends State<MainMenu> {
                     MaterialPageRoute(builder: (context) => CustomizeShip()),
                   );
                 },
-                child: Text('Customize', style: TextStyle(color: Colors.black)),
+                child: Text('customize'.tr, style: TextStyle(color: Colors.black)),
               ),
             ),
           ),
 
 
           // Configuration Buttons (displayed conditionally)
-            if (isConfiguring)
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Music Slider
-                    Container(
-                      width: 200.0, // Adjust the width as needed
-                      child: Column(
-                        children: [
-                          Text('Music', style: TextStyle(fontSize: 16.0, color: Colors.black)),
-                          Slider(
-                            value: musicVolume,
-                            onChanged: (value) {
-                              setState(() {
-                                musicVolume = value;
-                                // Update your music volume based on the 'value'
-                              });
-                            },
-                            min: 0.0,
-                            max: 1.0,
-                            label: 'Music Volume',
-                          ),
-                        ],
-                      ),
+          if (isConfiguring)
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Music Slider
+                  Container(
+                    width: 200.0, // Adjust the width as needed
+                    child: Column(
+                      children: [
+                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Slider(
+                          value: musicVolume,
+                          onChanged: (value) {
+                            setState(() {
+                              musicVolume = value;
+                              // Update your music volume based on the 'value'
+                            });
+                          },
+                          min: 0.0,
+                          max: 1.0,
+                          label: 'Music Volume',
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16.0),
+                  ),
+                  SizedBox(height: 16.0),
 
-                    // Sound Slider
-                    Container(
-                      width: 200.0, // Adjust the width as needed
-                      child: Column(
-                        children: [
-                          Text('Sound', style: TextStyle(fontSize: 16.0, color: Colors.black)),
-                          Slider(
-                            value: soundVolume,
-                            onChanged: (value) {
-                              setState(() {
-                                soundVolume = value;
-                                // Update your sound volume based on the 'value'
-                              });
-                            },
-                            min: 0.0,
-                            max: 1.0,
-                            label: 'Sound Volume',
-                          ),
-                        ],
-                      ),
+                  // Sound Slider
+                  Container(
+                    width: 200.0, // Adjust the width as needed
+                    child: Column(
+                      children: [
+                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Slider(
+                          value: soundVolume,
+                          onChanged: (value) {
+                            setState(() {
+                              soundVolume = value;
+                              // Update your sound volume based on the 'value'
+                            });
+                          },
+                          min: 0.0,
+                          max: 1.0,
+                          label: 'Sound Volume',
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16.0),
+                  ),
+                  SizedBox(height: 16.0),
 
-                    // Language Button
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle language button action
-                      },
-                      child: Text('Language', style: TextStyle(color: Colors.black)),
-                    ),
-                    SizedBox(height: 16.0),
+                  // Language Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Open a dialog or menu to select a language
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('language'.tr),
+                            content: Column(
+                              children: [
+                                ListTile(
+                                  title: Text('English'),
+                                  onTap: () {
+                                    var locale = Locale('en', 'US');
+                                    Get.updateLocale(locale);
+                                  },
+                                ),
+                                ListTile(
+                                  title: Text('Deutsch'),
+                                  onTap: () {
+                                    var locale = Locale('de', 'DE');
+                                    Get.updateLocale(locale);
+                                  },
+                                ),
+                                // Add more languages as needed
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Text('language'.tr, style: TextStyle(color: Colors.black)),
+                  ),
+                  SizedBox(height: 16.0),
 
-                    // Exit Game Button
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle exit game button action
-                      },
-                        child: Text('Exit Game', style: TextStyle(color: Colors.black)),
-                    ),
+                  // Exit Game Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle exit game button action
+                      SystemNavigator.pop(); // Exits the app
+                    },
+                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.black)),
+                  ),
 
 
-                  ],
-                ),
+                ],
               ),
+            ),
         ],
       ),
     );
