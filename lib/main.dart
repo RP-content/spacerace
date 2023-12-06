@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:spacerace/graphics/MainMenu.dart';
 
 void main() {
@@ -11,6 +12,13 @@ class Game extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // Set preferred orientations to landscape only
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+
     return MaterialApp(
       title: 'space race',
       theme: ThemeData(
@@ -19,5 +27,6 @@ class Game extends StatelessWidget {
       ),
       home: const MainMenu(),
     );
+
   }
 }
