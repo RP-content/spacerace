@@ -182,6 +182,7 @@ class _MainMenuState extends State<MainMenu> {
                     ElevatedButton(
                       onPressed: () {
                         // Handle exit game button action
+                        SystemNavigator.pop(); // Exits the app
                       },
                         child: Text('Exit Game', style: TextStyle(color: Colors.black)),
                     ),
