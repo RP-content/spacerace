@@ -1,22 +1,23 @@
 import 'dart:async';
 
 import 'package:spacerace/game/Level.dart';
+import 'package:spacerace/graphics/Game.dart';
 
 enum GameState{
   MENU,
   RUNNING,
 }
 class GameControler{
-  late GameControler _instance;
+  static late GameControler _instance;
   late Timer updates;
   GameState gameState = GameState.MENU;
   Level ?loadedLevel;
-
+  GameFrame ?frame;
   _GameControler(){
     updates = Timer.periodic(const Duration(milliseconds: 17), (timer) {gameloop();});
   }
 
-  GameControler getInstance() {
+  static GameControler getInstance() {
     if (_instance == null) {
       _instance = GameControler();
     }
@@ -26,6 +27,7 @@ class GameControler{
   void gameloop(){
     if(GameState.RUNNING == gameState){
       loadedLevel?.update(0.017);
+
     }
   }
 }
