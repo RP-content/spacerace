@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'customize_menu.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -9,11 +10,8 @@ class MainMenu extends StatefulWidget {
 
 class _MainMenuState extends State<MainMenu> {
   bool isConfiguring = false;
-  bool isCustomizing = false;
   double musicVolume = 0.5; // Initial volume values (adjust as needed)
   double soundVolume = 0.5;
-  int selectedFireEffect = 0; // Placeholder for selected fire effect
-  int selectedShipType = 0; // Placeholder for selected ship type
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +105,16 @@ class _MainMenuState extends State<MainMenu> {
               ignoring: isConfiguring,
               child: ElevatedButton(
                 onPressed: () {
-                  // Add your customize button action here
+                  // Navigate to CustomizeShip screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CustomizeShip()),
+                  );
                 },
                 child: Text('Customize', style: TextStyle(color: Colors.black)),
               ),
             ),
           ),
-
 
 
           // Configuration Buttons (displayed conditionally)
