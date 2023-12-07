@@ -12,9 +12,12 @@ class GameControler{
   late Timer updates;
   GameState gameState = GameState.MENU;
   Level ?loadedLevel;
-  GameFrame ?frame;
+  Function ?frameUpdater;
+
   _GameControler(){
+
     updates = Timer.periodic(const Duration(milliseconds: 17), (timer) {gameloop();});
+
   }
 
   static GameControler getInstance() {
@@ -27,7 +30,7 @@ class GameControler{
   void gameloop(){
     if(GameState.RUNNING == gameState){
       loadedLevel?.update(0.017);
-
+      frameUpdater?.call();
     }
   }
 }

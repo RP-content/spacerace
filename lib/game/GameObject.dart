@@ -1,8 +1,13 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
+import 'package:spacerace/game/Vector2D.dart';
+
 abstract class GameObject{
   double _x=0,_y=0;
   late Image texture;
+  Vector2D get position {return Vector2D(_x, _y);}
+
 
   double getX(){
     return _x;
@@ -22,6 +27,6 @@ abstract class GameObject{
   void start();
   void update(double delta);
   void end();
-
+  Widget getGraphics();
 
 }

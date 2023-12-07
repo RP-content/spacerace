@@ -7,19 +7,31 @@ class GameFrame extends StatefulWidget {
 
   @override
   State<GameFrame> createState() => _GameFrameState();
+
 }
 
 class _GameFrameState extends State<GameFrame> {
+  GameControler instance = GameControler.getInstance();
+  @override
+  void initState() {
+    super.initState();
+    GameControler.getInstance().frameUpdater = this.updateState;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
-        child: Container(
+        child: Stack(
 
+          children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
         ),
         onVerticalDragUpdate: (DragUpdateDetails details) => {
-          GameControler.getInstance().loadedLevel?.player.touchInput(details.delta)},
+          instance.loadedLevel?.player.touchInput(details.delta)},
       ),
     );
+  }
+
+  void updateState(){
+    setState(() {});
   }
 }
