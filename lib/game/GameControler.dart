@@ -8,29 +8,33 @@ enum GameState{
   RUNNING,
 }
 class GameControler{
-  static late GameControler _instance;
+  static GameControler ?_instance;
   late Timer updates;
   GameState gameState = GameState.MENU;
   Level ?loadedLevel;
   Function ?frameUpdater;
 
-  _GameControler(){
+  GameControler(){
 
     updates = Timer.periodic(const Duration(milliseconds: 17), (timer) {gameloop();});
 
   }
 
   static GameControler getInstance() {
-    if (_instance == null) {
-      _instance = GameControler();
-    }
-    return _instance;
+    _instance ??= GameControler();
+    return _instance!;
   }
 
   void gameloop(){
     if(GameState.RUNNING == gameState){
       loadedLevel?.update(0.017);
       frameUpdater?.call();
+      //print("loop");
     }
+  }
+
+  void loadLevel(){
+    loadedLevel = Level();
+    gameState = GameState.RUNNING;
   }
 }

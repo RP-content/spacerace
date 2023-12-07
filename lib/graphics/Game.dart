@@ -15,7 +15,8 @@ class _GameFrameState extends State<GameFrame> {
   @override
   void initState() {
     super.initState();
-    GameControler.getInstance().frameUpdater = this.updateState;
+    instance.frameUpdater = this.updateState;
+    instance.loadLevel(); //loading Level
   }
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,13 @@ class _GameFrameState extends State<GameFrame> {
 
           children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
         ),
+        onTap: () => {
+          instance.loadedLevel?.player.touchInput(Offset(0, 0.1))},
+        onDoubleTap: () =>{
+          instance.loadedLevel?.player.touchInput(Offset(0, -0.1))
+        },
         onVerticalDragUpdate: (DragUpdateDetails details) => {
-          instance.loadedLevel?.player.touchInput(details.delta)},
+          instance.loadedLevel?.player.touchInput(details.delta/10)},
       ),
     );
   }

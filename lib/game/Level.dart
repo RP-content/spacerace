@@ -15,6 +15,11 @@ class Level{
   double get widths {return heights*MediaQueryData.fromView(WidgetsBinding.instance.window).devicePixelRatio;}
   Vector2D offset = Vector2D(0, 0);
 
+  Level(){
+    player = Player();
+    addObject(player);
+
+  }
   void update(double delta){
     objects.forEach((element) {element.update(delta);});
     player.update(delta);

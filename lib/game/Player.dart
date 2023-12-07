@@ -21,7 +21,7 @@ class Player extends GameObject{
 
   @override
   void update(double delta) {
-    setX(getX()+delta*speed);
+    //setX(getX()+delta*speed);
   }
 
   void touchInput(Offset offset){
