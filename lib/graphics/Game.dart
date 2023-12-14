@@ -23,14 +23,8 @@ class _GameFrameState extends State<GameFrame> {
     return Scaffold(
       body: GestureDetector(
         child: Stack(
-
           children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
         ),
-        onTap: () => {
-          instance.loadedLevel?.player.touchInput(Offset(0, 0.1))},
-        onDoubleTap: () =>{
-          instance.loadedLevel?.player.touchInput(Offset(0, -0.1))
-        },
         onVerticalDragUpdate: (DragUpdateDetails details) => {
           instance.loadedLevel?.player.touchInput(details.delta/10)},
       ),
