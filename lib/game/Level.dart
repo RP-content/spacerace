@@ -18,11 +18,13 @@ class Level{
   Level(){
     player = Player();
     addObject(player);
-
+    player.start();
   }
+
   void update(double delta){
     objects.forEach((element) {element.update(delta);});
     player.update(delta);
+    offset = Vector2D(player.getX()-widths *0.4, 0);
   }
 
   void addObject(GameObject g){

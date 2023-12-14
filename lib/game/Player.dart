@@ -21,7 +21,7 @@ class Player extends GameObject{
 
   @override
   void update(double delta) {
-    //setX(getX()+delta*speed);
+    setX(getX()+delta*speed);
   }
 
   void touchInput(Offset offset){
@@ -33,7 +33,7 @@ class Player extends GameObject{
     return Positioned.fill(
         child: Container(
             color: Colors.transparent,
-            alignment: GameControler.getInstance().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
+            alignment: GameControler().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
             child: Container(
               color: Colors.deepOrange,
               width: 20,
