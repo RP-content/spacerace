@@ -1,6 +1,11 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:spacerace/graphics/game_play.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'customize_menu.dart';
 
 
@@ -12,16 +17,66 @@ class MainMenu extends StatefulWidget {
   _MainMenuState createState() => _MainMenuState();
 }
 
+
 class _MainMenuState extends State<MainMenu> {
   bool isConfiguring = false;
-  double musicVolume = 0.5; // Initial volume values (adjust as needed)
-  double soundVolume = 0.5;
+  late double musicVolume = 0.5; // Initial volume
+  late double soundVolume = 0.5;
+  late Map<String, Object> data ={};
+  late int money = 0;
+
+  void loadData() async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      musicVolume = prefs.getDouble('musicVolume') ?? 0.5;
+      soundVolume = prefs.getDouble('soundVolume') ?? 0.5;
+      money = prefs.getInt('money') ?? 0;
+
+      var dataString = prefs.getString('data');
+      data = dataString != null ? Map<String,Object>.from(jsonDecode(dataString)): {};
+
+    });
+  }
+  @override
+  void initState() {
+    loadData();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
+
+          //Title
+          Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Center(
+                  child: Text('Space Race',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                        shadows: [
+                          Shadow(
+                              blurRadius: 20,
+                              color: Colors.white,
+                              offset: Offset(0, 0)
+                          )
+                        ]
+                    ),
+
+                  ),
+                ),
+              )
+          ),
+
           // Money Display
           Positioned(
             top: 16.0,
@@ -33,7 +88,7 @@ class _MainMenuState extends State<MainMenu> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'earned'.tr, // Replace with your actual amount
+                'earned'.tr + '$money', // Replace with your actual amount
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -94,9 +149,13 @@ class _MainMenuState extends State<MainMenu> {
               ignoring: isConfiguring,
               child: ElevatedButton(
                 onPressed: () {
-                  // Add your start game button action here
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) =>  GamePlay(),
+                    ),
+                  );
                 },
-                child: Text('startGame'.tr, style: TextStyle(color: Colors.black)),
+                child: Text('startGame'.tr,style: TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -115,7 +174,7 @@ class _MainMenuState extends State<MainMenu> {
                     MaterialPageRoute(builder: (context) => CustomizeShip()),
                   );
                 },
-                child: Text('customize'.tr, style: TextStyle(color: Colors.black)),
+                child: Text('customize'.tr, style: TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -132,12 +191,13 @@ class _MainMenuState extends State<MainMenu> {
                     width: 200.0, // Adjust the width as needed
                     child: Column(
                       children: [
-                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: musicVolume,
                           onChanged: (value) {
                             setState(() {
                               musicVolume = value;
+                              updateMV(musicVolume);
                               // Update your music volume based on the 'value'
                             });
                           },
@@ -155,12 +215,13 @@ class _MainMenuState extends State<MainMenu> {
                     width: 200.0, // Adjust the width as needed
                     child: Column(
                       children: [
-                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: soundVolume,
                           onChanged: (value) {
                             setState(() {
                               soundVolume = value;
+                              updateSV(value);
                               // Update your sound volume based on the 'value'
                             });
                           },
@@ -205,7 +266,7 @@ class _MainMenuState extends State<MainMenu> {
                         },
                       );
                     },
-                    child: Text('language'.tr, style: TextStyle(color: Colors.black)),
+                    child: Text('language'.tr, style: TextStyle(color: Colors.white)),
                   ),
                   SizedBox(height: 16.0),
 
@@ -215,7 +276,7 @@ class _MainMenuState extends State<MainMenu> {
                       // Handle exit game button action
                       SystemNavigator.pop(); // Exits the app
                     },
-                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.black)),
+                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.white)),
                   ),
 
 
@@ -225,5 +286,39 @@ class _MainMenuState extends State<MainMenu> {
         ],
       ),
     );
+  }
+
+  void updateMV(double value) async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setDouble('musicVolume', value);
+    });
+  }
+
+  void updateSV(double value) async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      prefs.setDouble('soundVolume', value);
+
+    });
+  }
+
+  void updateData() async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final updatedData = {
+      'musicVolume': musicVolume,
+      'soundVolume': soundVolume,
+      'money': money,
+    };
+
+    if(!mapEquals(data, updatedData)) {
+      setState(() {
+        data = updatedData;
+      });
+
+      prefs.setString('data', jsonEncode(data));
+
+    }
+
   }
 }
