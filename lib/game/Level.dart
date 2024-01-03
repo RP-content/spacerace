@@ -11,8 +11,9 @@ import 'GameObject.dart';
 class Level{
   List<GameObject> objects = [];
   Player player = Player();
-  double heights = 10;
-  double get widths {return heights*MediaQueryData.fromView(WidgetsBinding.instance.window).devicePixelRatio;}
+  double height = 10;
+  double get widths {return height*MediaQueryData.fromView(WidgetsBinding.instance.window).devicePixelRatio;}
+  double get inputFactor {return MediaQueryData.fromView(WidgetsBinding.instance.window).size.height/height;}
   Vector2D offset = Vector2D(0, 0);
 
   Level(){
@@ -38,7 +39,7 @@ class Level{
   }
   
   Alignment getAlignmentFromPosition(double x, double y){
-    return Alignment(((x-offset.getX())/widths*2)-1, ((y-offset.getY())/heights*2)-1);
+    return Alignment(((x-offset.getX())/widths*2)-1, ((y-offset.getY())/height*2)-1);
   }
 
 }

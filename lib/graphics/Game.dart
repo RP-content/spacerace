@@ -26,7 +26,7 @@ class _GameFrameState extends State<GameFrame> {
           children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
         ),
         onVerticalDragUpdate: (DragUpdateDetails details) => {
-          instance.loadedLevel?.player.touchInput(details.delta/10)},
+          instance.loadedLevel?.player.touchInput(details.delta/instance.loadedLevel!.inputFactor)},
       ),
     );
   }
