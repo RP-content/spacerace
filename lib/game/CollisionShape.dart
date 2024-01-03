@@ -14,6 +14,9 @@ abstract class CollisionShape{
   bool isCollidingWithPoint(Vector2D point);
 
   bool isColliding(CollisionShape other){
+    if(other == this){
+      return false;
+    }
     bool b = isCollidingWithPoint(other.getNearestPoint(owner.position));
     if(b){
       function?.call();

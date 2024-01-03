@@ -5,8 +5,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/MovableObject.dart';
+import 'package:spacerace/game/Vector2D.dart';
 
-class Player extends GameObject{
+class Player extends MoveableObject{
   double speed = 1.0;
 
   @override
@@ -21,11 +22,11 @@ class Player extends GameObject{
 
   @override
   void update(double delta) {
-    setX(getX()+delta*speed);
+    move(Vector2D(getX()+delta*speed,0));
   }
 
   void touchInput(Offset offset){
-    setY(offset.dy+getY());
+    move(Vector2D(0,offset.dy+getY()));
   }
 
   @override
@@ -33,7 +34,7 @@ class Player extends GameObject{
     return Positioned.fill(
         child: Container(
             color: Colors.transparent,
-            alignment: GameControler().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
+            alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
             child: Container(
               color: Colors.deepOrange,
               width: 20,

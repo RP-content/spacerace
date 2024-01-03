@@ -11,7 +11,7 @@ class GameFrame extends StatefulWidget {
 }
 
 class _GameFrameState extends State<GameFrame> {
-  GameControler instance = GameControler();
+  GameController instance = GameController();
   @override
   void initState() {
     super.initState();

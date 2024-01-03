@@ -1,9 +1,16 @@
+import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
-abstract class MovableObject extends GameObject{
-  late double speed;
-  late Vector2D direction;
-
+abstract class MoveableObject extends GameObject{
+  void move(Vector2D dest){
+    setX(dest.getX());
+    setY(dest.getY());
+    if(collision != null){
+      GameController().loadedLevel?.objects.forEach((element) {
+        element.collision?.isColliding(collision!);
+      });
+    }
+  }
 
 }
