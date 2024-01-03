@@ -41,9 +41,10 @@ class Level{
     }
     offset = Vector2D(player.getX()-widths *0.4, 0);
     time += delta;
-    if(time > 3){
+    if(time > 2){
       time = 0;
-      addObject(Gem(Vector2D(player.getX(), 5)));
+      print("create Gem");
+      addObject(Gem(Vector2D(player.getX()+5, 5)));
     }
   }
 

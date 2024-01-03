@@ -26,7 +26,7 @@ class Player extends MoveableObject{
 
   @override
   void update(double delta) {
-    //move(Vector2D(getX()+delta*speed,getY()));
+    move(Vector2D(getX()+delta*speed,getY()));
   }
 
   void touchInput(Offset offset){

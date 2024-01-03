@@ -8,7 +8,9 @@ abstract class MoveableObject extends GameObject{
     setY(dest.getY());
     if(collision != null){
       GameController().loadedLevel?.objects.forEach((element) {
-        element.collision?.isColliding(collision!);
+        if(!GameController().loadedLevel!.removing.contains(element)){
+          element.collision?.isColliding(collision!);
+        }
       });
     }
   }

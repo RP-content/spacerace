@@ -28,7 +28,7 @@ abstract class GameObject{
   }
 
   void setPosition(Vector2D pos){
-    setY(pos.getX());
+    setX(pos.getX());
     setY(pos.getY());
   }
   Vector2D getPosition(){
