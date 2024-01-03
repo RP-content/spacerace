@@ -96,7 +96,7 @@ class _MainMenuState extends State<MainMenu> {
                 onPressed: () {
                   // Add your start game button action here
                 },
-                child: Text('startGame'.tr, style: TextStyle(color: Colors.black)),
+                child: Text('startGame'.tr, style: TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -115,7 +115,7 @@ class _MainMenuState extends State<MainMenu> {
                     MaterialPageRoute(builder: (context) => CustomizeShip()),
                   );
                 },
-                child: Text('customize'.tr, style: TextStyle(color: Colors.black)),
+                child: Text('customize'.tr, style: TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -132,7 +132,7 @@ class _MainMenuState extends State<MainMenu> {
                     width: 200.0, // Adjust the width as needed
                     child: Column(
                       children: [
-                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: musicVolume,
                           onChanged: (value) {
@@ -155,7 +155,7 @@ class _MainMenuState extends State<MainMenu> {
                     width: 200.0, // Adjust the width as needed
                     child: Column(
                       children: [
-                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: soundVolume,
                           onChanged: (value) {
@@ -205,7 +205,7 @@ class _MainMenuState extends State<MainMenu> {
                         },
                       );
                     },
-                    child: Text('language'.tr, style: TextStyle(color: Colors.black)),
+                    child: Text('language'.tr, style: TextStyle(color: Colors.white)),
                   ),
                   SizedBox(height: 16.0),
 
@@ -215,7 +215,7 @@ class _MainMenuState extends State<MainMenu> {
                       // Handle exit game button action
                       SystemNavigator.pop(); // Exits the app
                     },
-                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.black)),
+                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.white)),
                   ),
 
 

@@ -34,8 +34,13 @@ class Game extends StatelessWidget {
       DeviceOrientation.landscapeRight,
     ]);
 
+    //Set fullscreen
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
     return GetMaterialApp(
       title: 'space race',
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData.dark(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

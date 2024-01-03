@@ -12,6 +12,16 @@ class _CustomizeShipState extends State<CustomizeShip> {
   int selectedFireType = 0;
   int selectedShipDesign = 0;
 
+  // List of ship design images
+  List<String> shipDesigns = [
+    'assets/images/ships/ship_A.png',
+    'assets/images/ships/ship_B.png',
+    'assets/images/ships/ship_C.png',
+    'assets/images/ships/ship_D.png',
+    'assets/images/ships/ship_E.png',
+    'assets/images/ships/ship_F.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +53,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         // Add your fire types selection widgets here
                       ],
                     ),
@@ -55,8 +65,33 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('shipDesigns'.tr, style: TextStyle(fontSize: 16.0, color: Colors.black)),
+                        Text('shipDesigns'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
                         // Add your ship designs selection widgets here
+                        Expanded(
+                            child: ListView.builder(
+                              itemCount: shipDesigns.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      selectedShipDesign = index;
+                                      print(index);
+                                    });
+
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                      shipDesigns[index],
+                                      width: 80,
+                                      height: 80,
+                                      color: selectedShipDesign == index ? Colors.blue : null,
+                                    )
+                                  ),
+                                );
+                              },
+                            )
+                        )
                       ],
                     ),
                   ),
@@ -72,7 +107,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
               onPressed: () {
                 Navigator.pop(context); // Return to the main menu
               },
-              child: Text('backToMenu'.tr, style: TextStyle(color: Colors.black)),
+              child: Text('backToMenu'.tr, style: TextStyle(color: Colors.white)),
             ),
           ),
         ],
