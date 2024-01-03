@@ -29,4 +29,8 @@ class Vector2D{
   Vector2D operator /(num other){
     return Vector2D(_x/other, _y/other);
   }
+  @override
+  String toString() {
+    return "X: $_x Y: $_y";
+  }
 }

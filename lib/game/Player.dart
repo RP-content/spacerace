@@ -26,17 +26,18 @@ class Player extends MoveableObject{
 
   @override
   void update(double delta) {
-    move(Vector2D(getX()+delta*speed,0));
+    //move(Vector2D(getX()+delta*speed,getY()));
   }
 
   void touchInput(Offset offset){
-    move(Vector2D(0,offset.dy+getY()));
+    move(Vector2D(getX(),offset.dy+getY()));
   }
 
   @override
   Widget getGraphics() {
     return Positioned.fill(
         child: Container(
+          //0xAARRGGBB
             color: Colors.transparent,
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
             child: Container(

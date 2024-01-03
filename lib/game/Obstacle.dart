@@ -3,22 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
-import 'package:spacerace/game/Vector2D.dart';
 
 import 'GameControler.dart';
+import 'Vector2D.dart';
 
-class Gem extends GameObject{
-  Gem([Vector2D? pos]){
-    collision = SphereCollision(this, .25, collected);
+class Obstacle extends GameObject {
+  Obstacle([Vector2D? pos]){
+    collision = SphereCollision(this, 1);
     if(pos != null){
       setPosition(pos);
     }
-  }
-
-  void collected(){
-    //Player score +1
-    print("collected !!");
-    destroy();
   }
 
   @override
@@ -33,9 +27,9 @@ class Gem extends GameObject{
             color: Colors.transparent,
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
             child: Container(
-              color: Colors.red,
-              width: 20,
-              height: 20,
+              color: Colors.blueGrey[900],
+              width: 50,
+              height: 50,
             )
         ));
   }
