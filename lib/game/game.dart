@@ -12,6 +12,12 @@ import 'package:flutter/gestures.dart';
 int shipSprite = 4;
 class SpaceRace extends FlameGame with PanDetector{
 
+  // The whole game world.
+  final World world = World();
+
+  // Indicates weather the game world has been already initialized.
+  bool _isAlreadyLoaded = false;
+
   late Player player;
   Offset? _pointerStartPosition;
   Offset? _pointerCurrentPosition;
@@ -49,6 +55,7 @@ class SpaceRace extends FlameGame with PanDetector{
 
   }
 
+  //joystick
   @override
   void render(Canvas canvas){
     super.render(canvas);
@@ -113,4 +120,5 @@ class SpaceRace extends FlameGame with PanDetector{
     player.setMoveDirection(Vector2.zero());
     onPanEnd(DragEndInfo.fromDetails(details));
   }
+
 }

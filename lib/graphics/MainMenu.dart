@@ -151,7 +151,7 @@ class _MainMenuState extends State<MainMenu> {
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) =>  GamePlay(),
+                      builder: (context) =>  const GamePlay(),
                     ),
                   );
                 },
