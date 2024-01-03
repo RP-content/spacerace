@@ -5,11 +5,15 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/MovableObject.dart';
+import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
 class Player extends MoveableObject{
   double speed = 1.0;
 
+  Player(){
+    collision = SphereCollision(this, 0.5);
+  }
   @override
   void end() {
     // TODO: implement end
@@ -37,11 +41,10 @@ class Player extends MoveableObject{
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
             child: Container(
               color: Colors.deepOrange,
-              width: 20,
-              height: 20,
+              width: 40,
+              height: 40,
           )
     ));
-
 
   }
 
