@@ -37,8 +37,8 @@ class Level{
     for (var element in removing) {
       element.end();
       objects.remove(element);
-      removing.remove(element);
     }
+    removing.clear();
     offset = Vector2D(player.getX()-widths *0.4, 0);
     time += delta;
     if(time > 2){
