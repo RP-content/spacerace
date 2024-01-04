@@ -73,6 +73,19 @@ class _CustomizeShipState extends State<CustomizeShip> {
                       ),
                     ),
 
+                    // Display Selected Spaceship (Center)
+                    Container(
+                      width: 200,
+                      height: 200,
+                      child: selectedShipDesign != null
+                          ? Image.asset(
+                        shipDesigns[selectedShipDesign],
+                        width: 200,
+                        height: 200,
+                      )
+                          : Container(), // Display an empty container if no spaceship is selected
+                    ),
+
                     // Ship Design Column (Right)
                     Container(
                       width: 120.0,
@@ -114,15 +127,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
               ),
             ),
 
-            // Selected Ship Display
-         /*   Container(
-              alignment: Alignment.center,
-              child: Image.asset(
-                shipDesigns[selectedShipDesign],
-                width: 120,
-                height: 120,
-              ),
-            ), */
+
             // Padding for Back to Main Menu Button (Bottom Center)
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
