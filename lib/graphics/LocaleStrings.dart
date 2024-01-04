@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:spacerace/game/GameControler.dart';
 
 class LocaleStrings extends Translations{
   @override
@@ -6,7 +7,7 @@ class LocaleStrings extends Translations{
   Map<String, Map<String, String>> get keys => {
 
     'en_US':{
-      'earned' : 'Earned: 100',
+      'earned' : 'Earned: ${GameController().score}',
       'fireTypes' :'Fire Types',
       'shipDesigns' : 'Ship Designs',
       'backToMenu' : 'Back to Menu',
@@ -18,7 +19,7 @@ class LocaleStrings extends Translations{
       'exitGame' : 'Exit Game',
     },
     'de_DE':{
-      'earned' : 'Earned: 100',
+      'earned' : 'Earned: ${GameController().score}',
       'fireTypes' : 'Feuerarten',
       'shipDesigns' : 'Schiffsentwürfe',
       'backToMenu' : 'Zurück zum Menü',

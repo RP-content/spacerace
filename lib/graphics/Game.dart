@@ -31,6 +31,16 @@ class _GameFrameState extends State<GameFrame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+        //backgroundColor: Colors.amber,
+        foregroundColor: Colors.black,
+        //toolbarHeight: 50,
+        title: Text(
+            "Score: ${GameController().score}",
+        ),
+      ),
       backgroundColor: Color(0xFFFDF413),
       body: GestureDetector(
         child: Stack(

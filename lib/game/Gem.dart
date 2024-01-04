@@ -18,7 +18,7 @@ class Gem extends GameObject {
   }
 
   void collected() {
-    //Player score +1
+    GameController().score++;
     //print("collected !!");
     destroy();
   }
