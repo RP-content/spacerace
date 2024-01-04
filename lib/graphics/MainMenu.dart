@@ -24,6 +24,17 @@ class _MainMenuState extends State<MainMenu> {
     return Scaffold(
       body: Stack(
         children: [
+          // Background Image
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/mainbackground.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+
+
           //Title
           Positioned(
               top: 0,
