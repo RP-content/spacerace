@@ -17,7 +17,7 @@ class _LooseScreenState extends State<LooseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/mainbackground.png'),
             fit: BoxFit.cover,
@@ -29,7 +29,7 @@ class _LooseScreenState extends State<LooseScreen> {
             //Centered text "GAME OVER"
             Flexible(
               child: Center(
-                child: Text('GAME OVER'.tr, style: TextStyle(fontSize: 30.0, color: Colors.white))
+                child: Text('GAME OVER'.tr, style: const TextStyle(fontSize: 30.0, color: Colors.white))
               ),
             ),
 
@@ -40,7 +40,7 @@ class _LooseScreenState extends State<LooseScreen> {
                 onPressed: () {
                   Navigator.of(context).popUntil((route) => route.isFirst);
                 },
-                child: Text('backToMenu'.tr, style: TextStyle(color: Colors.white)),
+                child: Text('backToMenu'.tr, style: const TextStyle(color: Colors.white)),
               ),
             ),
           ],

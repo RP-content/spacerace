@@ -37,7 +37,7 @@ class Game extends StatelessWidget {
       ),
 
       translations: LocaleStrings(), //the two lines who are in charge of language switching
-      locale: Locale('en', 'US'),
+      locale: const Locale('en', 'US'),
 
       home: const MainMenu(),
     );

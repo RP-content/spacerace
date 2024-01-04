@@ -1,9 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:spacerace/game/GameControler.dart';
-import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/MovableObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
@@ -87,7 +84,7 @@ class Player extends MoveableObject {
           left: -5, // Adjust the position of the fire relative to the ship
           child: Transform.rotate(
             angle: 90 * 3.141592653589793 / 180,
-            child: Container(
+            child: SizedBox(
               width: GameController()
                   .loadedLevel
                   ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
@@ -105,7 +102,7 @@ class Player extends MoveableObject {
         ),
         Transform.rotate(
           angle: 90 * 3.141592653589793 / 180,
-          child: Container(
+          child: SizedBox(
             width: GameController()
                 .loadedLevel
                 ?.getLogicUnitFromPosition(size),

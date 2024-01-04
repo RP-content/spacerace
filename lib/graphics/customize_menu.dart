@@ -42,7 +42,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/mainbackground.png'),
             fit: BoxFit.cover,
@@ -60,8 +60,8 @@ class _CustomizeShipState extends State<CustomizeShip> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'earned'.tr + '${GameController().score}',
-                style: TextStyle(color: Colors.white),
+                '${'earned'.tr}${GameController().score}',
+                style: const TextStyle(color: Colors.white),
               ),
             ),
 
@@ -73,12 +73,12 @@ class _CustomizeShipState extends State<CustomizeShip> {
                   children: [
 
                     // Fire Type Column (Left)
-                    Container(
+                    SizedBox(
                       width: 120.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                          Text('fireTypes'.tr, style: const TextStyle(fontSize: 16.0, color: Colors.white)),
                           Expanded(
                             child: ListView.builder(
                               itemCount: fireDesigns.length,
@@ -122,7 +122,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     ),
 
                     // Display Selected Spaceship (Center)
-                    Container(
+                    SizedBox(
                       width: 200,
                       height: 200,
                       child:  Image.asset(
@@ -133,12 +133,12 @@ class _CustomizeShipState extends State<CustomizeShip> {
                     ),
 
                     // Ship Design Column (Right)
-                    Container(
+                    SizedBox(
                       width: 120.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('shipDesigns'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                          Text('shipDesigns'.tr, style: const TextStyle(fontSize: 16.0, color: Colors.white)),
                           // Add ship designs
                           Expanded(
                             child: ListView.builder(
@@ -183,7 +183,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                 onPressed: () {
                   Navigator.pop(context); // Return to the main menu
                 },
-                child: Text('backToMenu'.tr, style: TextStyle(color: Colors.white)),
+                child: Text('backToMenu'.tr, style: const TextStyle(color: Colors.white)),
               ),
             ),
           ],

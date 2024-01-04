@@ -69,7 +69,7 @@ class Hindrance extends GameObject{
     return Positioned(
       left: pos.getX(),
       top: pos.getY(),
-      child: Container(
+      child: SizedBox(
         //color: Colors.cyan,
         width:
         GameController().loadedLevel?.getLogicUnitFromPosition(size),

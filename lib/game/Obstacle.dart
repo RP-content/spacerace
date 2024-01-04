@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 
@@ -60,7 +59,7 @@ class Obstacle extends GameObject {
     return Positioned(
       left: pos.getX(),
       top: pos.getY(),
-      child: Container(
+      child: SizedBox(
         width:
         GameController().loadedLevel?.getLogicUnitFromPosition(size),
         height:

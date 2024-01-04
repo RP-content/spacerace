@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spacerace/game/GameControler.dart';
 
@@ -29,7 +28,7 @@ class _GameFrameState extends State<GameFrame> {
   void initState() {
     super.initState();
     //Referenz um Frameupdates auszulösen
-    instance.frameUpdater = this.updateState;
+    instance.frameUpdater = updateState;
     instance.loadLevel(); //loading Level
   }
 

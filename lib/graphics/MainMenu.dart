@@ -42,7 +42,7 @@ class _MainMenuState extends State<MainMenu> {
   void loose(){
     Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => LooseScreen()),);
+        MaterialPageRoute(builder: (context) => const LooseScreen()),);
   }
 
   @override
@@ -52,7 +52,7 @@ class _MainMenuState extends State<MainMenu> {
         children: [
           // Background Image
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/mainbackground.png'),
                 fit: BoxFit.cover,
@@ -66,8 +66,8 @@ class _MainMenuState extends State<MainMenu> {
               left: 0,
               right: 0,
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: Center(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: const Center(
                   child: Text('Space Race',
                     style: TextStyle(
                         color: Colors.black,
@@ -94,7 +94,7 @@ class _MainMenuState extends State<MainMenu> {
             child: IgnorePointer(
               ignoring: isConfiguring,
               child: IconButton(
-                icon: Icon(Icons.arrow_left),
+                icon: const Icon(Icons.arrow_left),
                 onPressed: () {
                   // level change
                   setState(() {
@@ -113,7 +113,7 @@ class _MainMenuState extends State<MainMenu> {
             child: IgnorePointer(
               ignoring: isConfiguring,
               child: IconButton(
-                icon: Icon(Icons.arrow_right),
+                icon: const Icon(Icons.arrow_right),
                 onPressed: () {
                   //level change
                   setState(() {
@@ -146,7 +146,7 @@ class _MainMenuState extends State<MainMenu> {
                   isConfiguring = !isConfiguring;
                 });
               },
-              child: Icon(
+              child: const Icon(
                 Icons.settings,
                 size: 36.0,
               ),
@@ -163,10 +163,10 @@ class _MainMenuState extends State<MainMenu> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => GameFrame()),
+                    MaterialPageRoute(builder: (context) => const GameFrame()),
                   );
                 },
-                child: Text('startGame'.tr, style: TextStyle(color: Colors.white)),
+                child: Text('startGame'.tr, style: const TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -182,10 +182,10 @@ class _MainMenuState extends State<MainMenu> {
                   // Navigate to CustomizeShip screen
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CustomizeShip()),
+                    MaterialPageRoute(builder: (context) => const CustomizeShip()),
                   );
                 },
-                child: Text('customize'.tr, style: TextStyle(color: Colors.white)),
+                child: Text('customize'.tr, style: const TextStyle(color: Colors.white)),
               ),
             ),
           ),
@@ -198,11 +198,11 @@ class _MainMenuState extends State<MainMenu> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Music Slider
-                  Container(
+                  SizedBox(
                     width: 200.0,
                     child: Column(
                       children: [
-                        Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                        Text('music'.tr, style: const TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: musicVolume,
                           onChanged: (value) {
@@ -218,14 +218,14 @@ class _MainMenuState extends State<MainMenu> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   // Sound Slider
-                  Container(
+                  SizedBox(
                     width: 200.0, // Adjust the width
                     child: Column(
                       children: [
-                        Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                        Text('sound'.tr, style: const TextStyle(fontSize: 16.0, color: Colors.white)),
                         Slider(
                           value: soundVolume,
                           onChanged: (value) {
@@ -241,19 +241,19 @@ class _MainMenuState extends State<MainMenu> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to CustomizeShip screen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => AboutUsPage() ),
+                        MaterialPageRoute(builder: (context) => const AboutUsPage() ),
                       );
                     },
-                    child: Text('aboutUs'.tr, style: TextStyle(color: Colors.white)),
+                    child: Text('aboutUs'.tr, style: const TextStyle(color: Colors.white)),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
 
                   // Language Button
@@ -268,16 +268,16 @@ class _MainMenuState extends State<MainMenu> {
                             content: Column(
                               children: [
                                 ListTile(
-                                  title: Text('English'),
+                                  title: const Text('English'),
                                   onTap: () {
-                                    var locale = Locale('en', 'US');
+                                    var locale = const Locale('en', 'US');
                                     Get.updateLocale(locale);
                                   },
                                 ),
                                 ListTile(
-                                  title: Text('Deutsch'),
+                                  title: const Text('Deutsch'),
                                   onTap: () {
-                                    var locale = Locale('de', 'DE');
+                                    var locale = const Locale('de', 'DE');
                                     Get.updateLocale(locale);
                                   },
                                 ),
@@ -288,9 +288,9 @@ class _MainMenuState extends State<MainMenu> {
                         },
                       );
                     },
-                    child: Text('language'.tr, style: TextStyle(color: Colors.white)),
+                    child: Text('language'.tr, style: const TextStyle(color: Colors.white)),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
 
                   // Exit Game Button
                   ElevatedButton(
@@ -298,7 +298,7 @@ class _MainMenuState extends State<MainMenu> {
                       // Handle exit game button action
                       SystemNavigator.pop(); // Exits the app
                     },
-                    child: Text('exitGame'.tr, style: TextStyle(color: Colors.white)),
+                    child: Text('exitGame'.tr, style: const TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
