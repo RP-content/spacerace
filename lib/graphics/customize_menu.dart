@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/Player.dart';
 
 class CustomizeShip extends StatefulWidget {

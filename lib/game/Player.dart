@@ -11,6 +11,7 @@ import 'package:flame/particles.dart';
 
 class Player extends MoveableObject {
   double speed = 1.0;
+  double size = 1.0;
   static int spaceSelection = 4;
   static String spaceType = 'assets/images/ships/ship_E.png';
 
@@ -45,7 +46,7 @@ class Player extends MoveableObject {
     print(tryda);
   }
   Player(){
-    collision = SphereCollision(this, 0.5);
+    collision = SphereCollision(this, size);
   }
   @override
   void end() {
@@ -60,6 +61,11 @@ class Player extends MoveableObject {
   @override
   void update(double delta) {
     move(Vector2D(getX()+delta*speed,getY()));
+    GameController().loadedLevel?.objects.forEach((element) {
+      if(!GameController().loadedLevel!.removing.contains(element)){
+        element.collision?.isColliding(collision!);
+      }
+    });
   }
 
   void touchInput(Offset offset){
@@ -73,12 +79,12 @@ class Player extends MoveableObject {
           //0xAARRGGBB
             color: Colors.transparent,
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
-          child: Transform.rotate(
-            angle: 90 * 3.141592653589793 / 180, // Rotate 90 degrees (in radians)
-            child: Image.asset(
-              spaceType, // Replace 'spaceship.png' with the actual asset path
-              width: 40,
-              height: 40,
+            child: Transform.rotate(
+             angle: 90 * 3.141592653589793 / 180, // Rotate 90 degrees (in radians)
+              child: Image.asset(
+                spaceType, // Replace 'spaceship.png' with the actual asset path
+                 width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+                height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
             ),
           ),
         )

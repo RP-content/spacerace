@@ -60,5 +60,7 @@ class Level{
   Alignment getAlignmentFromPosition(double x, double y){
     return Alignment(((x-offset.getX())/widths*2)-1, ((y-offset.getY())/height*2)-1);
   }
-
+  double getLogicUnitFromPosition(double d){
+    return d * inputFactor;
+  }
 }
