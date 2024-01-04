@@ -35,7 +35,6 @@ class Level{
   }
 
   Random rand = Random();
-  double time = 5;
   void update(double delta){
     player.update(delta);
     offset = Vector2D(player.getX()-widths *0.4, 0);
@@ -52,13 +51,20 @@ class Level{
       objects.remove(element);
     }
     removing.clear();
-    time += delta;
-    if(time > 5){
-      time = 0;
-      print("create Gem");
-      addObject(Gem(Vector2D(player.getX()+20, 5)));
-      addObject(Obstacle(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, 1)));
-      addObject(Hindrance(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, 9)));
+    //print(offset.getX()%2);
+    if(offset.getX()%2 < 0.02){
+
+      for(int i = 0; i<3;i++){
+        if(rand.nextInt(100)<30){
+          addObject(Hindrance(rand.nextDouble()*3+2,Vector2D(player.getX()+20, rand.nextDouble()*10)));
+        }
+      }
+      for(int i = 0; i<2;i++){
+        if(rand.nextInt(100)<25){
+          addObject(Obstacle(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, rand.nextDouble()*10)));
+        }
+      }
+      addObject(Gem(Vector2D(player.getX()+20, rand.nextDouble()*10)));
     }
   }
 
