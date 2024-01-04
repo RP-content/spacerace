@@ -56,11 +56,7 @@ class _GameFrameState extends State<GameFrame> {
   @override
   void dispose() {
     super.dispose();
-    /*Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => LooseScreen()),
-    );*/
-    GameController().backToMenu();
+    GameController().backToMenu(false);
   }
   void updateState(){
     setState(() {});

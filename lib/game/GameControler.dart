@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:spacerace/game/Level.dart';
 import 'package:spacerace/graphics/Game.dart';
+import 'package:spacerace/graphics/MainMenu.dart';
 
 enum GameState{
   MENU,
@@ -12,6 +13,7 @@ class GameController{
   late Timer updates;
   GameState gameState = GameState.MENU;
   Level ?loadedLevel;
+  Function ?looseF;
   Function ?frameUpdater;
   int design = 0;
   int score = 0;
@@ -33,8 +35,11 @@ class GameController{
     }
   }
 
-  void backToMenu(){
+  void backToMenu(bool loose){
     gameState = GameState.MENU;
+    if(loose){
+      looseF?.call();
+    }
   }
 
   void setShipDesign(int i){

@@ -33,13 +33,13 @@ class Obstacle extends GameObject {
         variant = variant2;
     }
     selected = Random().nextInt(variant.length);
-    collision = SphereCollision(this, size*0.4, collected);
+    collision = SphereCollision(this, size*0.4, collided);
     if(pos != null){
       setPosition(pos);
     }
   }
-  void collected() {
-
+  void collided() {
+    GameController().backToMenu(true);
   }
 
   @override

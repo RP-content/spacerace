@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';//used to exit the app
 import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/graphics/Game.dart';//used for accessing the game with button
 import 'package:get/get.dart';//Change of language
+import 'LooseScreen.dart';
 import 'customize_menu.dart';// used for accessing customize menu
 import 'About.dart';//About us
 
@@ -27,6 +28,18 @@ class _MainMenuState extends State<MainMenu> {
     'assets/images/planets/planet_1.png',
     'assets/images/planets/planet_2.png',
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GameController().looseF = loose;
+  }
+  void loose(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => LooseScreen()),);
+  }
 
   @override
   Widget build(BuildContext context) {
