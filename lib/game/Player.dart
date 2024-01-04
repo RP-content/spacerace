@@ -80,63 +80,53 @@ class Player extends MoveableObject {
 
   @override
   Widget getGraphics() {
-    return Positioned.fill(
-      child: Container(
-        //0xAARRGGBB
-        color: Colors.transparent,
-        alignment: GameController().loadedLevel?.getAlignmentFromPosition(
-          getX(),
-          getY(),
-        ),
-        child: Stack(
-          children: [
-
-            Positioned(
-              top: 18, // Adjust the position of the fire relative to the ship
-              left: -5, // Adjust the position of the fire relative to the ship
-              child: Transform.rotate(
-                angle: 90 * 3.141592653589793 / 180,
-                child: Container(
-                  width: GameController()
-                      .loadedLevel
-                      ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
-                  height: GameController()
-                      .loadedLevel
-                      ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Image.asset(
-                      fireType, // Replace with the actual path to your fire asset
-                    ),
-                  ),
+    Vector2D pos = GameController().loadedLevel!.posInLogic(position, size);
+    return Positioned(
+      left: pos.getX(),
+      top: pos.getY(),
+      child: Stack(
+        children: [
+        Positioned(
+          top: 18, // Adjust the position of the fire relative to the ship
+          left: -5, // Adjust the position of the fire relative to the ship
+          child: Transform.rotate(
+            angle: 90 * 3.141592653589793 / 180,
+            child: Container(
+              width: GameController()
+                  .loadedLevel
+                  ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
+              height: GameController()
+                  .loadedLevel
+                  ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset(
+                  fireType, // Replace with the actual path to your fire asset
                 ),
               ),
             ),
-            Transform.rotate(
-              angle: 90 * 3.141592653589793 / 180,
-              child: Container(
-                width: GameController()
-                    .loadedLevel
-                    ?.getLogicUnitFromPosition(size),
-                height: GameController()
-                    .loadedLevel
-                    ?.getLogicUnitFromPosition(size),
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: Image.asset(
-                    spaceType, // Replace with the actual path to your ship asset
-                  ),
-                ),
+          ),
+        ),
+        Transform.rotate(
+          angle: 90 * 3.141592653589793 / 180,
+          child: Container(
+            width: GameController()
+                .loadedLevel
+                ?.getLogicUnitFromPosition(size),
+            height: GameController()
+                .loadedLevel
+                ?.getLogicUnitFromPosition(size),
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Image.asset(
+                spaceType, // Replace with the actual path to your ship asset
               ),
             ),
-          ],
+          ),
         ),
+        ],
       ),
     );
   }
 
-
 }
-
-
-

@@ -82,7 +82,13 @@ class Level{
   void removeObject(GameObject g){
     removing.add(g);
   }
-  
+
+  Vector2D posInLogic(Vector2D pos, double size){
+    Vector2D posreltopleft = pos-offset;
+    Size s = MediaQueryData.fromView(WidgetsBinding.instance.window).size;
+    return Vector2D((posreltopleft.getX()-size*.5)/widths*s.width,(posreltopleft.getY()-size*.5)/height*s.height);
+  }
+
   Alignment getAlignmentFromPosition(double x, double y){
     return Alignment(((x-offset.getX())/widths*2)-1, ((y-offset.getY())/height*2)-1);
   }

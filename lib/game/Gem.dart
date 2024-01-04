@@ -8,10 +8,10 @@ import 'package:spacerace/game/Vector2D.dart';
 import 'GameControler.dart';
 
 class Gem extends GameObject {
-  double size = .5;
+  double size = .7;
 
   Gem([Vector2D? pos]) {
-    collision = SphereCollision(this, size/2, collected);
+    collision = SphereCollision(this, size / 2, collected);
     if (pos != null) {
       setPosition(pos);
     }
@@ -30,7 +30,21 @@ class Gem extends GameObject {
 
   @override
   Widget getGraphics() {
-    return Positioned.fill(
+    Vector2D pos = GameController().loadedLevel!.posInLogic(position, size);
+    return Positioned(
+      left: pos.getX(),
+      top: pos.getY(),
+      child: Container(
+        //color: Colors.cyan,
+        width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+        height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Image.asset('assets/images/diamond.png',),
+        ),
+      )
+    );
+    /*return Positioned.fill(
         child: Container(
             color: Colors.transparent,
             alignment: GameController()
@@ -48,7 +62,7 @@ class Gem extends GameObject {
                     'assets/images/diamond.png',
                 ),
               ),
-            )));
+            )));*/
   }
 
   @override

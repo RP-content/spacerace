@@ -38,26 +38,23 @@ class Obstacle extends GameObject {
 
   @override
   Widget getGraphics() {
-    return Positioned.fill(
-        child: Container(
-            color: Colors.transparent,
-            alignment: GameController()
-                .loadedLevel
-                ?.getAlignmentFromPosition(getX(), getY()),
-            child: Container(
-              //color: Colors.cyan,
-              width:
-              GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              height:
-              GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Image.asset(
-                  variants[selected],
-                ),
-              ),
-            )
-        )
+    Vector2D pos = GameController().loadedLevel!.posInLogic(position, size);
+    return Positioned(
+      left: pos.getX(),
+      top: pos.getY(),
+      child: Container(
+        //color: Colors.cyan,
+        width:
+        GameController().loadedLevel?.getLogicUnitFromPosition(size),
+        height:
+        GameController().loadedLevel?.getLogicUnitFromPosition(size),
+        child: FittedBox(
+          fit: BoxFit.fill,
+          child: Image.asset(
+            variants[selected],
+          ),
+        ),
+      )
     );
   }
 
