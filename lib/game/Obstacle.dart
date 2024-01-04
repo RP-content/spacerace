@@ -9,6 +9,9 @@ import 'package:spacerace/game/SphereCollision.dart';
 import 'GameControler.dart';
 import 'Vector2D.dart';
 
+///made by Robert Peter and Edwin Khirsivara
+///object that ends the game when collided
+
 class Obstacle extends GameObject {
   List<String> variant1 = [
     'assets/images/smallObjects/stone1_1.png',

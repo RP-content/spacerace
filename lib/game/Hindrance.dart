@@ -8,6 +8,9 @@ import 'GameControler.dart';
 import 'SphereCollision.dart';
 import 'Vector2D.dart';
 
+///made by Robert Peter and Edwin Khirsivara
+///object that slows the player down.
+
 class Hindrance extends GameObject{
   List<String> variant1 = [
     'assets/images/largeObjects/dune1_1.png',

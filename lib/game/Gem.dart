@@ -7,6 +7,9 @@ import 'package:spacerace/game/Vector2D.dart';
 
 import 'GameControler.dart';
 
+///made by Robert Peter and Edwin Khirsivara
+///collectable object
+
 class Gem extends GameObject {
   double size = .8;
 
