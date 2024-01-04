@@ -1,9 +1,12 @@
 
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:spacerace/game/Gem.dart';
+import 'package:spacerace/game/Hindrance.dart';
+import 'package:spacerace/game/Obstacle.dart';
 import 'package:spacerace/game/Player.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
@@ -31,7 +34,8 @@ class Level{
     print("width:$widths, height:$height");
   }
 
-  double time = 0;
+  Random rand = Random();
+  double time = 5;
   void update(double delta){
     for (var element in objects) {element.update(delta);}
     for (var element in removing) {
@@ -41,10 +45,12 @@ class Level{
     removing.clear();
     offset = Vector2D(player.getX()-widths *0.4, 0);
     time += delta;
-    if(time > 2){
+    if(time > 5){
       time = 0;
       print("create Gem");
-      addObject(Gem(Vector2D(player.getX()+10, 5)));
+      addObject(Gem(Vector2D(player.getX()+20, 5)));
+      addObject(Obstacle(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, 1)));
+      addObject(Hindrance(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, 9)));
     }
   }
 

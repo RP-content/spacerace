@@ -18,10 +18,13 @@ class Obstacle extends GameObject {
   double size;
   Obstacle(this.size,[Vector2D? pos]){
     selected = Random(85).nextInt(variants.length);
-    collision = SphereCollision(this, size);
+    collision = SphereCollision(this, size*0.4, collected);
     if(pos != null){
       setPosition(pos);
     }
+  }
+  void collected() {
+    destroy();
   }
 
   @override

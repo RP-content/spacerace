@@ -10,7 +10,8 @@ import 'package:spacerace/game/Vector2D.dart';
 import 'package:flame/particles.dart';
 
 class Player extends MoveableObject {
-  double speed = 1.0;
+  double speed = 1.5;
+  bool slow = false;
   double size = 2.0;
   static int spaceSelection = 4;
   static String spaceType = 'assets/images/ships/ship_E.png';
@@ -62,7 +63,12 @@ class Player extends MoveableObject {
 
   @override
   void update(double delta) {
-    move(Vector2D(getX() + delta * speed, getY()));
+    if(slow){
+    move(Vector2D(getX() + delta * speed*.5, getY()));
+    }else{
+      move(Vector2D(getX() + delta * speed, getY()));
+    }
+    slow = false;
     GameController().loadedLevel?.objects.forEach((element) {
       if (!GameController().loadedLevel!.removing.contains(element)) {
         element.collision?.isColliding(collision!);
