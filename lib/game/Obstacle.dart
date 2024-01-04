@@ -8,8 +8,11 @@ import 'package:spacerace/game/SphereCollision.dart';
 
 import 'GameControler.dart';
 import 'Vector2D.dart';
-
+/// author: Robert Peter
+/// ähnlich zu Hindrance
+/// Objekte die bei Berührung das aktuelle Level beenden
 class Obstacle extends GameObject {
+
   List<String> variant1 = [
     'assets/images/smallObjects/stone1_1.png',
     'assets/images/smallObjects/stone2_1.png',
@@ -25,6 +28,7 @@ class Obstacle extends GameObject {
   late List<String> variant;
   late int selected;
   double size;
+
   Obstacle(this.size,[Vector2D? pos]){
     switch(GameController().planet){
       case 0:
@@ -55,7 +59,6 @@ class Obstacle extends GameObject {
       left: pos.getX(),
       top: pos.getY(),
       child: Container(
-        //color: Colors.cyan,
         width:
         GameController().loadedLevel?.getLogicUnitFromPosition(size),
         height:

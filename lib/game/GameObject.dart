@@ -5,10 +5,11 @@ import 'package:spacerace/game/CollisionShape.dart';
 import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
+/// author: Robert Peter
+/// allgemeines Objekt mit den nötigen Informationen
 abstract class GameObject{
   CollisionShape? collision;
   double _x = 0, _y = 0;
-  late Image texture;
   Vector2D get position {return Vector2D(_x, _y);}
 
 

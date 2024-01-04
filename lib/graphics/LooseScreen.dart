@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+/// author: Edwin Khirsivara
 class LooseScreen extends StatefulWidget {
   const LooseScreen({Key? key}) : super(key: key);
 
   @override
   _LooseScreenState createState() => _LooseScreenState();
 }
-
+/// author: Edwin Khirsivara
 class _LooseScreenState extends State<LooseScreen> {
 
   @override

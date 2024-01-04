@@ -8,13 +8,17 @@ import 'GameControler.dart';
 import 'SphereCollision.dart';
 import 'Vector2D.dart';
 
+/// author: Robert Peter
 class Hindrance extends GameObject{
+
+  ///Texturen für Sand
   List<String> variant1 = [
     'assets/images/largeObjects/dune1_1.png',
     'assets/images/largeObjects/dune2_1.png',
     'assets/images/largeObjects/dune3_1.png',
     'assets/images/largeObjects/dune4_1.png',
   ];
+  /// Texturen für Wald
   List<String> variant2 =[
     'assets/images/middleObjects/bush1_2.png',
     'assets/images/middleObjects/bush2_2.png',
@@ -25,7 +29,9 @@ class Hindrance extends GameObject{
   late List<String> variant;
   late int selected;
   double size;
+
   Hindrance(this.size,[Vector2D? pos]){
+    //Auswahl der Texturen nach gewähltem Level
     switch(GameController().planet){
       case 0:
         variant = variant1;
@@ -34,23 +40,25 @@ class Hindrance extends GameObject{
         variant = variant2;
         size = size *0.6;
     }
+
+    //zufällige Textur
     selected = Random().nextInt(variant.length);
 
-    collision = SphereCollision(this, size*0.3,collected);
+    collision = SphereCollision(this, size*0.3,onCollision);
+
     if(pos != null){
       setPosition(pos);
     }
   }
 
-  void collected() {
+  //Methode für Kollision
+  void onCollision() {
     GameController().loadedLevel?.player.slow = true;
   }
 
-  @override
-  void end() {
-    // TODO: implement end
-  }
 
+
+  ///Visuelle repräsentation des Objektes
   @override
   Widget getGraphics() {
     Vector2D pos = GameController().loadedLevel!.posInLogic(position, size);
@@ -83,5 +91,8 @@ class Hindrance extends GameObject{
     // TODO: implement update
   }
 
-
+  @override
+  void end() {
+    // TODO: implement end
+  }
 }

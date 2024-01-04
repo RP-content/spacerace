@@ -1,5 +1,6 @@
 import 'dart:math';
-
+/// author: Robert Peter
+/// Vector2D als Datentyp
 class Vector2D{
   late double _x,_y;
 
@@ -11,15 +12,14 @@ class Vector2D{
   double getY(){
     return _y;
   }
-
+  //normalisierter Vektor
   Vector2D get normalized => this / length;
-
+  //länge
   double get length => sqrt(pow(_x,2)+pow(_y, 2));
 
   Vector2D operator +(Vector2D other){
     return Vector2D(_x+other.getX(), _y+other.getY());
   }
-
   Vector2D operator -(Vector2D other){
     return Vector2D(_x-other.getX(), _y-other.getY());
   }
@@ -29,6 +29,7 @@ class Vector2D{
   Vector2D operator /(num other){
     return Vector2D(_x/other, _y/other);
   }
+
   @override
   String toString() {
     return "X: $_x Y: $_y";

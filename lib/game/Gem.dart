@@ -4,9 +4,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
-
 import 'GameControler.dart';
 
+/// author: Robert Peter
+/// Edelsteine, die für Punkte gesammelt werden können
 class Gem extends GameObject {
   double size = .8;
 
@@ -35,7 +36,6 @@ class Gem extends GameObject {
       left: pos.getX(),
       top: pos.getY(),
       child: Container(
-        //color: Colors.cyan,
         width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
         height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
         child: FittedBox(
@@ -44,6 +44,8 @@ class Gem extends GameObject {
         ),
       )
     );
+
+    //vorherige positionierung über Alignment
     /*return Positioned.fill(
         child: Container(
             color: Colors.transparent,

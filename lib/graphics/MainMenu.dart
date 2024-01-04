@@ -13,7 +13,6 @@ import 'About.dart';//About us
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
 
-
   @override
   _MainMenuState createState() => _MainMenuState();
 }
@@ -30,12 +29,16 @@ class _MainMenuState extends State<MainMenu> {
     'assets/images/planets/planet_2.png',
   ];
 
+  /// author: Robert Peter
+  /// übergeben der Referenz an den GameController
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     GameController().looseF = loose;
   }
+  /// author: Robert Peter
+  /// anzeigen des LooseScreens
   void loose(){
     Navigator.push(
         context,
@@ -56,7 +59,6 @@ class _MainMenuState extends State<MainMenu> {
               ),
             ),
           ),
-
 
           //Title
           Positioned(
@@ -298,8 +300,6 @@ class _MainMenuState extends State<MainMenu> {
                     },
                     child: Text('exitGame'.tr, style: TextStyle(color: Colors.white)),
                   ),
-
-
                 ],
               ),
             ),

@@ -1,7 +1,8 @@
 
 import 'package:spacerace/game/CollisionShape.dart';
 import 'package:spacerace/game/Vector2D.dart';
-
+/// author: Robert Peter
+/// implementation von kreisförmigen Kollisionsbereichen
 class SphereCollision extends CollisionShape{
   double radius;
 
