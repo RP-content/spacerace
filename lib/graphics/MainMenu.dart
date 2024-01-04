@@ -62,7 +62,7 @@ class _MainMenuState extends State<MainMenu> {
           ),
 
           // Money Display
-          Positioned(
+         /* Positioned(
             top: 16.0,
             left: 16.0,
             child: Container(
@@ -72,11 +72,11 @@ class _MainMenuState extends State<MainMenu> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'earned'.tr, // Replace with your actual amount
+                'earned'.tr + '${GameController().score}', // Replace with your actual amount
                 style: TextStyle(color: Colors.white),
               ),
             ),
-          ),
+          ), */
 
           // Level Change Triangles (Left)
           Positioned(

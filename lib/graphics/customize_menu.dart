@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/game/Player.dart';
+import 'package:spacerace/game/GameControler.dart';
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);
@@ -50,7 +51,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'earned'.tr, // Replace with your actual amount
+                'earned'.tr + '${GameController().score}', // Replace with your actual amount
                 style: TextStyle(color: Colors.white),
               ),
             ),

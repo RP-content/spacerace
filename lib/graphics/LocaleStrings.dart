@@ -7,7 +7,7 @@ class LocaleStrings extends Translations{
   Map<String, Map<String, String>> get keys => {
 
     'en_US':{
-      'earned' : 'Earned: ${GameController().score}',
+      'earned' : 'Earned: ',
       'fireTypes' :'Fire Types',
       'shipDesigns' : 'Ship Designs',
       'backToMenu' : 'Back to Menu',
@@ -19,7 +19,7 @@ class LocaleStrings extends Translations{
       'exitGame' : 'Exit Game',
     },
     'de_DE':{
-      'earned' : 'Earned: ${GameController().score}',
+      'earned' : 'Earned: ',
       'fireTypes' : 'Feuerarten',
       'shipDesigns' : 'Schiffsentwürfe',
       'backToMenu' : 'Zurück zum Menü',
