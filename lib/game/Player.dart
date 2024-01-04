@@ -64,7 +64,7 @@ class Player extends MoveableObject {
   @override
   void update(double delta) {
     if(slow){
-    move(Vector2D(getX() + delta * speed*.5, getY()));
+    move(Vector2D(getX() + delta * speed*.3, getY()));
     }else{
       move(Vector2D(getX() + delta * speed, getY()));
     }
@@ -77,7 +77,12 @@ class Player extends MoveableObject {
   }
 
   void touchInput(Offset offset) {
-    move(Vector2D(getX(), offset.dy + getY()));
+    if(slow){
+      move(Vector2D(getX(), offset.dy*.1 + getY()));
+    }else{
+      move(Vector2D(getX(), offset.dy + getY()));
+    }
+
   }
 
   @override
@@ -92,7 +97,7 @@ class Player extends MoveableObject {
             angle: 90 * 3.141592653589793 / 180,
             // Rotate 90 degrees (in radians)
             child: Container(
-              color: Colors.cyan,
+              //color: Colors.cyan,
               width:
               GameController().loadedLevel?.getLogicUnitFromPosition(size),
               height:

@@ -12,6 +12,15 @@ class GameFrame extends StatefulWidget {
 
 class _GameFrameState extends State<GameFrame> {
   GameController instance = GameController();
+  List<Widget> list = [];
+
+  @override
+  void setState(VoidCallback fn) {
+    list = List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics()));
+    list.add(GameController().loadedLevel!.player.getGraphics());
+    super.setState(fn);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -24,7 +33,7 @@ class _GameFrameState extends State<GameFrame> {
       backgroundColor: Color(0xFFFDF413),
       body: GestureDetector(
         child: Stack(
-          children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
+          children: list,
         ),
         onVerticalDragUpdate: (DragUpdateDetails details) => {
           instance.loadedLevel?.player.touchInput(details.delta/instance.loadedLevel!.inputFactor)},

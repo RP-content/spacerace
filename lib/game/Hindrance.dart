@@ -10,12 +10,15 @@ import 'Vector2D.dart';
 
 class Hindrance extends GameObject{
   List<String> variants = [
-    'assets/images/dune1_1.png',
+    'assets/images/largeObjects/dune1_1.png',
+    'assets/images/largeObjects/dune2_1.png',
+    'assets/images/largeObjects/dune3_1.png',
+    'assets/images/largeObjects/dune4_1.png',
   ];
   late int selected;
   double size;
   Hindrance(this.size,[Vector2D? pos]){
-    selected = Random(85).nextInt(variants.length);
+    selected = Random().nextInt(variants.length);
     collision = SphereCollision(this, size*0.4,collected);
     if(pos != null){
       setPosition(pos);
