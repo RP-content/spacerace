@@ -7,6 +7,7 @@ import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/MovableObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
+import 'package:flame/particles.dart';
 
 class Player extends MoveableObject {
   double speed = 1.0;
