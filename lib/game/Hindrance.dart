@@ -8,7 +8,9 @@ import 'GameControler.dart';
 import 'SphereCollision.dart';
 import 'Vector2D.dart';
 
+
 /// author: Robert Peter
+///object that slows the player down.
 class Hindrance extends GameObject{
 
   ///Texturen für Sand
