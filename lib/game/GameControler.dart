@@ -13,6 +13,7 @@ class GameController{
   GameState gameState = GameState.MENU;
   Level ?loadedLevel;
   Function ?frameUpdater;
+  int design = 0;
 
   factory GameController(){
     return _instance;
@@ -32,6 +33,10 @@ class GameController{
 
   void backToMenu(){
     gameState = GameState.MENU;
+  }
+
+  void setShipDesign(int i){
+    design = i;
   }
 
   void loadLevel(){

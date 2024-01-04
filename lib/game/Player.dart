@@ -10,9 +10,19 @@ import 'package:spacerace/game/Vector2D.dart';
 
 class Player extends MoveableObject{
   double speed = 1.0;
+  double size = 1.0;
+
+  List<String> shipDesigns = [
+    'assets/images/ships/ship_A.png',
+    'assets/images/ships/ship_B.png',
+    'assets/images/ships/ship_C.png',
+    'assets/images/ships/ship_D.png',
+    'assets/images/ships/ship_E.png',
+    'assets/images/ships/ship_F.png',
+  ];
 
   Player(){
-    collision = SphereCollision(this, 0.5);
+    collision = SphereCollision(this, size);
   }
   @override
   void end() {
@@ -45,11 +55,12 @@ class Player extends MoveableObject{
           //0xAARRGGBB
             color: Colors.transparent,
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
-            child: Container(
-              color: Colors.deepOrange,
-              width: 40,
-              height: 40,
-          )
+            child: Image.asset(
+              shipDesigns[GameController().design],
+              width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              
+            )
     ));
 
   }

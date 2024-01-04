@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:spacerace/game/GameControler.dart';
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);
@@ -75,6 +76,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                                   onTap: (){
                                     setState(() {
                                       selectedShipDesign = index;
+                                      GameController().setShipDesign(index);
                                       print(index);
                                     });
 

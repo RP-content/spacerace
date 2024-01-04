@@ -21,6 +21,7 @@ class _GameFrameState extends State<GameFrame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFDF413),
       body: GestureDetector(
         child: Stack(
           children: List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics())),
