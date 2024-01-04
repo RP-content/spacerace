@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -8,8 +10,15 @@ import 'GameControler.dart';
 import 'Vector2D.dart';
 
 class Obstacle extends GameObject {
-  Obstacle([Vector2D? pos]){
-    collision = SphereCollision(this, 1);
+  List<String> variants = [
+    'assets/images/stone1_1.png',
+    'assets/images/cactus1_1.png',
+  ];
+  late int selected;
+  double size;
+  Obstacle(this.size,[Vector2D? pos]){
+    selected = Random(85).nextInt(variants.length);
+    collision = SphereCollision(this, size);
     if(pos != null){
       setPosition(pos);
     }
@@ -25,13 +34,24 @@ class Obstacle extends GameObject {
     return Positioned.fill(
         child: Container(
             color: Colors.transparent,
-            alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
+            alignment: GameController()
+                .loadedLevel
+                ?.getAlignmentFromPosition(getX(), getY()),
             child: Container(
-              color: Colors.blueGrey[900],
-              width: 50,
-              height: 50,
+              //color: Colors.cyan,
+              width:
+              GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              height:
+              GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset(
+                  variants[selected],
+                ),
+              ),
             )
-        ));
+        )
+    );
   }
 
   @override
