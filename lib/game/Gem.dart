@@ -11,7 +11,7 @@ class Gem extends GameObject {
   double size = .5;
 
   Gem([Vector2D? pos]) {
-    collision = SphereCollision(this, size, collected);
+    collision = SphereCollision(this, size/2, collected);
     if (pos != null) {
       setPosition(pos);
     }
@@ -37,7 +37,7 @@ class Gem extends GameObject {
                 .loadedLevel
                 ?.getAlignmentFromPosition(getX(), getY()),
             child: Container(
-              color: Colors.cyan,
+              //color: Colors.cyan,
               width:
                   GameController().loadedLevel?.getLogicUnitFromPosition(size),
               height:
