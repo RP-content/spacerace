@@ -16,6 +16,7 @@ class Player extends MoveableObject {
   double size = 2.0;
   static int spaceSelection = 1;
   static String spaceType = 'assets/images/ships/ship_A.png';
+  String fireType = 'assets/images/ships/effect_purple.png';
 
   //Method by Juan Tirado
   static void exampleImp(int tryda) {
@@ -39,12 +40,8 @@ class Player extends MoveableObject {
     print(tryda);
   }
 
-  late AnimationController _fireController;
-  late Animation<double> _fireAnimation;
-
   Player() {
     collision = SphereCollision(this, size * 0.3);
-
   }
 
   @override
@@ -88,28 +85,56 @@ class Player extends MoveableObject {
         //0xAARRGGBB
         color: Colors.transparent,
         alignment: GameController().loadedLevel?.getAlignmentFromPosition(
-            getX(), getY()),
-        child: Transform.rotate(
-            angle: 90 * 3.141592653589793 / 180,
-            // Rotate 90 degrees (in radians)
-            child: Container(
-              //color: Colors.cyan,
-              width:
-              GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              height:
-              GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Image.asset(
-                  spaceType,
+          getX(),
+          getY(),
+        ),
+        child: Stack(
+          children: [
+
+            Positioned(
+              top: 18, // Adjust the position of the fire relative to the ship
+              left: -5, // Adjust the position of the fire relative to the ship
+              child: Transform.rotate(
+                angle: 90 * 3.141592653589793 / 180,
+                child: Container(
+                  width: GameController()
+                      .loadedLevel
+                      ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
+                  height: GameController()
+                      .loadedLevel
+                      ?.getLogicUnitFromPosition(1), // Set fireSize accordingly
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Image.asset(
+                      fireType, // Replace with the actual path to your fire asset
+                    ),
+                  ),
                 ),
               ),
-            )
+            ),
+            Transform.rotate(
+              angle: 90 * 3.141592653589793 / 180,
+              child: Container(
+                width: GameController()
+                    .loadedLevel
+                    ?.getLogicUnitFromPosition(size),
+                height: GameController()
+                    .loadedLevel
+                    ?.getLogicUnitFromPosition(size),
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: Image.asset(
+                    spaceType, // Replace with the actual path to your ship asset
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
-
   }
+
 
 }
 

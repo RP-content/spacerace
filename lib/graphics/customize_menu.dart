@@ -4,6 +4,7 @@ import 'package:spacerace/game/GameControler.dart';// get earned value
 import 'package:spacerace/game/Player.dart'; //change ship appearance
 
 //made by Juan Tirado
+//customize menu site where you can see how much gems you have collected as well as to change the appearance of the ship
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);

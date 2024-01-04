@@ -6,6 +6,7 @@ import 'customize_menu.dart';// used for accessing customize menu
 import 'About.dart';//About us
 
 //Made by Juan Tirado
+//main menu. Also includes the options menu
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
 
