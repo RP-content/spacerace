@@ -44,7 +44,7 @@ class Level{
     if(time > 2){
       time = 0;
       print("create Gem");
-      addObject(Gem(Vector2D(player.getX()+5, 5)));
+      addObject(Gem(Vector2D(player.getX()+10, 5)));
     }
   }
 
