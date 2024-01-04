@@ -20,9 +20,6 @@ class GameController{
     return _instance;
   }
 
-  int getScore(){
-    return score;
-}
 
   GameController._intern(){
     updates = Timer.periodic(const Duration(milliseconds: 20), (timer) {gameloop();});
