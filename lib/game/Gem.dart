@@ -7,15 +7,17 @@ import 'package:spacerace/game/Vector2D.dart';
 
 import 'GameControler.dart';
 
-class Gem extends GameObject{
-  Gem([Vector2D? pos]){
-    collision = SphereCollision(this, .25, collected);
-    if(pos != null){
+class Gem extends GameObject {
+  double size = .5;
+
+  Gem([Vector2D? pos]) {
+    collision = SphereCollision(this, size, collected);
+    if (pos != null) {
       setPosition(pos);
     }
   }
 
-  void collected(){
+  void collected() {
     //Player score +1
     print("collected !!");
     destroy();
@@ -31,13 +33,22 @@ class Gem extends GameObject{
     return Positioned.fill(
         child: Container(
             color: Colors.transparent,
-            alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
+            alignment: GameController()
+                .loadedLevel
+                ?.getAlignmentFromPosition(getX(), getY()),
             child: Container(
-              color: Colors.red,
-              width: 20,
-              height: 20,
-            )
-        ));
+              color: Colors.cyan,
+              width:
+                  GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              height:
+                  GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              child: FittedBox(
+                fit: BoxFit.fill,
+                  child: Image.asset(
+                    'assets/images/diamond.png',
+                ),
+              ),
+            )));
   }
 
   @override
@@ -49,5 +60,4 @@ class Gem extends GameObject{
   void update(double delta) {
     // TODO: implement update
   }
-
 }
