@@ -9,11 +9,13 @@ import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
 
-
+/// author: Robert Peter
+/// repräsentation des Spielers
 class Player extends MoveableObject {
   double speed = 2.5;
   bool slow = false;
   double size = 2.0;
+
   static String spaceType = 'assets/images/ships/ship_A.png';
   static String fireType = 'assets/images/ships/effect_purple.png';
 
@@ -27,9 +29,8 @@ class Player extends MoveableObject {
     fireType = fire;
   }
 
-
-
   Player() {
+    // Kollisions Shape mit angepasstem Radius
     collision = SphereCollision(this, size * 0.3);
   }
 
@@ -45,12 +46,16 @@ class Player extends MoveableObject {
 
   @override
   void update(double delta) {
+    //Bewegung nach vorne
     if(slow){
     move(Vector2D(delta * speed*.3, 0));
     }else{
-      move(Vector2D(delta * speed,0));
+      move(Vector2D(delta * speed, 0));
     }
+    //slow wird deaktiviert
+    //falls immer noch Kontakt vorhanden ist, wird der slow bei der Kollisionsprüfung wieder aktiviert
     slow = false;
+    //in diesem Falle können Objekte nur mit dem Spieler kollidieren, andernfalls wäre die Prüfung im Level
     GameController().loadedLevel?.objects.forEach((element) {
       if (!GameController().loadedLevel!.removing.contains(element)) {
         element.collision?.isColliding(collision!);
@@ -58,15 +63,17 @@ class Player extends MoveableObject {
     });
   }
 
+  ///aufgerufen vom GestureDetector
   void touchInput(Offset offset) {
     if(slow){
       move(Vector2D(0, offset.dy*.1));
     }else{
       move(Vector2D(0, offset.dy));
     }
-
   }
 
+  ///Prinzip von Robert Peter
+  ///Integration der customisation options von Juan Tirado
   @override
   Widget getGraphics() {
     Vector2D pos = GameController().loadedLevel!.posInLogic(position, size);
