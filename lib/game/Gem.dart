@@ -8,7 +8,7 @@ import 'package:spacerace/game/Vector2D.dart';
 import 'GameControler.dart';
 
 class Gem extends GameObject {
-  double size = .7;
+  double size = .8;
 
   Gem([Vector2D? pos]) {
     collision = SphereCollision(this, size / 2, collected);

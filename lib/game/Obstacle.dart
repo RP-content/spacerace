@@ -10,7 +10,7 @@ import 'GameControler.dart';
 import 'Vector2D.dart';
 
 class Obstacle extends GameObject {
-  List<String> variants = [
+  List<String> variant1 = [
     'assets/images/smallObjects/stone1_1.png',
     'assets/images/smallObjects/stone2_1.png',
     'assets/images/smallObjects/stone3_1.png',
@@ -18,10 +18,21 @@ class Obstacle extends GameObject {
     'assets/images/middleObjects/cactus1_1.png',
     'assets/images/middleObjects/cactus2_1.png',
   ];
+  List<String> variant2 = [
+    'assets/images/largeObjects/tree1_2.png',
+    'assets/images/largeObjects/tree2_2.png',
+  ];
+  late List<String> variant;
   late int selected;
   double size;
   Obstacle(this.size,[Vector2D? pos]){
-    selected = Random().nextInt(variants.length);
+    switch(GameController().planet){
+      case 0:
+        variant = variant1;
+      case 1:
+        variant = variant2;
+    }
+    selected = Random().nextInt(variant.length);
     collision = SphereCollision(this, size*0.4, collected);
     if(pos != null){
       setPosition(pos);
@@ -51,7 +62,7 @@ class Obstacle extends GameObject {
         child: FittedBox(
           fit: BoxFit.fill,
           child: Image.asset(
-            variants[selected],
+            variant[selected],
           ),
         ),
       )

@@ -41,7 +41,8 @@ class _GameFrameState extends State<GameFrame> {
             "Score: ${GameController().score}",
         ),
       ),
-      backgroundColor: Color(0xFFFDF315),
+      backgroundColor: (GameController().planet == 0) ? Color(0xFFFDF315): Color(
+          0xFF46B053),
       body: GestureDetector(
         child: Stack(
           children: list,

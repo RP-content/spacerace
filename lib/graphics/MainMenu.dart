@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';//used to exit the app
+import 'package:spacerace/game/GameControler.dart';
 import 'package:spacerace/graphics/Game.dart';//used for accessing the game with button
 import 'package:get/get.dart';//Change of language
 import 'customize_menu.dart';// used for accessing customize menu
@@ -100,6 +101,7 @@ class _MainMenuState extends State<MainMenu> {
                   //level change
                   setState(() {
                     selectedPlanetIndex = (selectedPlanetIndex + 1) % planetAssets.length;
+                    GameController().planet = selectedPlanetIndex;
                   });
                 },
               ),

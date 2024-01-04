@@ -15,6 +15,7 @@ class GameController{
   Function ?frameUpdater;
   int design = 0;
   int score = 0;
+  int planet = 0;
 
   factory GameController(){
     return _instance;

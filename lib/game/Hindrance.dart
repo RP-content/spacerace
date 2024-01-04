@@ -9,16 +9,31 @@ import 'SphereCollision.dart';
 import 'Vector2D.dart';
 
 class Hindrance extends GameObject{
-  List<String> variants = [
+  List<String> variant1 = [
     'assets/images/largeObjects/dune1_1.png',
     'assets/images/largeObjects/dune2_1.png',
     'assets/images/largeObjects/dune3_1.png',
     'assets/images/largeObjects/dune4_1.png',
   ];
+  List<String> variant2 =[
+    'assets/images/middleObjects/bush1_2.png',
+    'assets/images/middleObjects/bush2_2.png',
+    'assets/images/smallObjects/grass2_2.png',
+    'assets/images/smallObjects/grass1_2.png',
+  ];
+
+  late List<String> variant;
   late int selected;
   double size;
   Hindrance(this.size,[Vector2D? pos]){
-    selected = Random().nextInt(variants.length);
+    switch(GameController().planet){
+      case 0:
+        variant = variant1;
+      case 1:
+        variant = variant2;
+    }
+    selected = Random().nextInt(variant.length);
+
     collision = SphereCollision(this, size*0.4,collected);
     if(pos != null){
       setPosition(pos);
@@ -49,7 +64,7 @@ class Hindrance extends GameObject{
         child: FittedBox(
           fit: BoxFit.fill,
           child: Image.asset(
-            variants[selected],
+            variant[selected],
           ),
         ),
       )
