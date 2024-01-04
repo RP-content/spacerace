@@ -24,6 +24,32 @@ class _MainMenuState extends State<MainMenu> {
     return Scaffold(
       body: Stack(
         children: [
+          //Title
+          Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: Center(
+                  child: Text('Space Race',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 40,
+                        shadows: [
+                          Shadow(
+                              blurRadius: 20,
+                              color: Colors.white,
+                              offset: Offset(0, 0)
+                          )
+                        ]
+                    ),
+
+                  ),
+                ),
+              )
+          ),
+
           // Money Display
           Positioned(
             top: 16.0,

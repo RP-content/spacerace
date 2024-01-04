@@ -8,19 +8,42 @@ import 'package:spacerace/game/MovableObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
-class Player extends MoveableObject{
+class Player extends MoveableObject {
   double speed = 1.0;
   double size = 1.0;
+  static int spaceSelection = 4;
+  static String spaceType = 'assets/images/ships/ship_E.png';
 
-  List<String> shipDesigns = [
-    'assets/images/ships/ship_A.png',
-    'assets/images/ships/ship_B.png',
-    'assets/images/ships/ship_C.png',
-    'assets/images/ships/ship_D.png',
-    'assets/images/ships/ship_E.png',
-    'assets/images/ships/ship_F.png',
-  ];
+  static void exampleImp(int tryda){
+    spaceSelection = tryda;
+    switch (spaceSelection){
+      case 0:
+        spaceType = 'assets/images/ships/ship_A.png';
 
+      case 1:
+        spaceType = 'assets/images/ships/ship_B.png';
+
+
+      case 2:
+        spaceType = 'assets/images/ships/ship_C.png';
+
+
+      case 3:
+        spaceType = 'assets/images/ships/ship_D.png';
+
+
+      case 4:
+        spaceType = 'assets/images/ships/ship_E.png';
+
+
+      case 5:
+        spaceType = 'assets/images/ships/ship_F.png';
+
+      default:
+        print('Error changing space asset');
+    }
+    print(tryda);
+  }
   Player(){
     collision = SphereCollision(this, size);
   }
@@ -55,13 +78,16 @@ class Player extends MoveableObject{
           //0xAARRGGBB
             color: Colors.transparent,
             alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
-            child: Image.asset(
-              shipDesigns[GameController().design],
-              width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
-              
-            )
-    ));
+            child: Transform.rotate(
+             angle: 90 * 3.141592653589793 / 180, // Rotate 90 degrees (in radians)
+              child: Image.asset(
+                spaceType, // Replace 'spaceship.png' with the actual asset path
+                 width: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+                height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
+            ),
+          ),
+        )
+    );
 
   }
 

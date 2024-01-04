@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spacerace/game/GameControler.dart';
+import 'package:spacerace/game/Player.dart';
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);
@@ -10,8 +11,10 @@ class CustomizeShip extends StatefulWidget {
 }
 
 class _CustomizeShipState extends State<CustomizeShip> {
+
   int selectedFireType = 0;
-  int selectedShipDesign = 0;
+  static int selectedShipDesign = 0;
+
 
   // List of ship design images
   List<String> shipDesigns = [
@@ -22,6 +25,8 @@ class _CustomizeShipState extends State<CustomizeShip> {
     'assets/images/ships/ship_E.png',
     'assets/images/ships/ship_F.png',
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                                   onTap: (){
                                     setState(() {
                                       selectedShipDesign = index;
-                                      GameController().setShipDesign(index);
+                                      Player.exampleImp(selectedShipDesign);
                                       print(index);
                                     });
 
