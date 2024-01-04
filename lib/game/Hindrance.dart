@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spacerace/game/GameObject.dart';
@@ -7,9 +9,14 @@ import 'SphereCollision.dart';
 import 'Vector2D.dart';
 
 class Hindrance extends GameObject{
-
-  Hindrance([Vector2D? pos]){
-    collision = SphereCollision(this, 2);
+  List<String> variants = [
+    'assets/images/dune1_1.png',
+  ];
+  late int selected;
+  double size;
+  Hindrance(this.size,[Vector2D? pos]){
+    selected = Random(85).nextInt(variants.length);
+    collision = SphereCollision(this, size);
     if(pos != null){
       setPosition(pos);
     }
@@ -25,19 +32,22 @@ class Hindrance extends GameObject{
     return Positioned.fill(
         child: Container(
             color: Colors.transparent,
-            alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(),getY()),
+            alignment: GameController().loadedLevel?.getAlignmentFromPosition(getX(), getY()),
             child: Container(
-              color: Colors.blueGrey,
-              width: 100,
-              height: 100,
-              decoration: ShapeDecoration(
-                color: Colors.blueGrey[200],
-                image: null,
-                shape: const CircleBorder(
-                )
+              //color: Colors.cyan,
+              width:
+              GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              height:
+              GameController().loadedLevel?.getLogicUnitFromPosition(size),
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Image.asset(
+                  variants[selected],
+                ),
               ),
             )
-        ));
+        )
+    );
   }
 
   @override

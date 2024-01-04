@@ -47,7 +47,7 @@ class Player extends MoveableObject {
   }
 
   Player() {
-    collision = SphereCollision(this, size*0.3);
+    collision = SphereCollision(this, size * 0.3);
   }
 
   @override
