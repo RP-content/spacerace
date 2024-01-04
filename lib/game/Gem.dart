@@ -40,6 +40,7 @@ class Gem extends GameObject {
         height: GameController().loadedLevel?.getLogicUnitFromPosition(size),
         child: FittedBox(
           fit: BoxFit.fill,
+          ///Texturen erstellt von Edwin Khirsivara
           child: Image.asset('assets/images/diamond.png',),
         ),
       )

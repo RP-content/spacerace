@@ -13,6 +13,7 @@ import 'Vector2D.dart';
 ///object that slows the player down.
 class Hindrance extends GameObject{
 
+  ///Texturen erstellt von Edwin Khirsivara
   ///Texturen für Sand
   List<String> variant1 = [
     'assets/images/largeObjects/dune1_1.png',
@@ -20,6 +21,7 @@ class Hindrance extends GameObject{
     'assets/images/largeObjects/dune3_1.png',
     'assets/images/largeObjects/dune4_1.png',
   ];
+  ///Texturen erstellt von Edwin Khirsivara
   /// Texturen für Wald
   List<String> variant2 =[
     'assets/images/middleObjects/bush1_2.png',

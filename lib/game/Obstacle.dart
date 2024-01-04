@@ -13,6 +13,7 @@ import 'Vector2D.dart';
 /// Objekte die bei Berührung das aktuelle Level beenden
 class Obstacle extends GameObject {
 
+  ///Texturen erstellt von Edwin Khirsivara
   List<String> variant1 = [
     'assets/images/smallObjects/stone1_1.png',
     'assets/images/smallObjects/stone2_1.png',
@@ -21,6 +22,7 @@ class Obstacle extends GameObject {
     'assets/images/middleObjects/cactus1_1.png',
     'assets/images/middleObjects/cactus2_1.png',
   ];
+  ///Texturen erstellt von Edwin Khirsivara
   List<String> variant2 = [
     'assets/images/largeObjects/tree1_2.png',
     'assets/images/largeObjects/tree2_2.png',
