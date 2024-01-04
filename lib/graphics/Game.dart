@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spacerace/game/GameControler.dart';
+import 'package:spacerace/graphics/LooseScreen.dart';
 
 class GameFrame extends StatefulWidget {
   const GameFrame({super.key});
@@ -43,7 +44,10 @@ class _GameFrameState extends State<GameFrame> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LooseScreen()),
+    );
     GameController().backToMenu();
     super.dispose();
   }
