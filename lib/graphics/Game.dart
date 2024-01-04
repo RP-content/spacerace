@@ -44,8 +44,12 @@ class _GameFrameState extends State<GameFrame> {
       backgroundColor: (GameController().planet == 0) ? Color(0xFFFDF315): Color(
           0xFF46B053),
       body: GestureDetector(
-        child: Stack(
-          children: list,
+        child: Container(
+          color: Colors.transparent,
+
+          child: Stack(
+            children: list,
+          ),
         ),
         onVerticalDragUpdate: (DragUpdateDetails details) => {
           instance.loadedLevel?.player.touchInput(details.delta/instance.loadedLevel!.inputFactor)},
