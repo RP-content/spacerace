@@ -68,6 +68,11 @@ flutter:
   assets:
     - assets/images/
     - assets/images/ships/
+    - assets/images/backgrounds/
+    - assets/images/largeObjects/
+    - assets/images/middleObjects/
+    - assets/images/smallObjects/
+    - assets/images/planets
   #   - assets/audio/
     
   #   - images/a_dot_ham.jpeg
