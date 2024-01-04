@@ -18,6 +18,13 @@ class _MainMenuState extends State<MainMenu> {
   bool isConfiguring = false;
   double musicVolume = 0.5; // Initial volume values
   double soundVolume = 0.5;
+  int selectedPlanetIndex = 0;
+
+  // Add your planets assets
+  List<String> planetAssets = [
+    'assets/images/planets/planet_1.png',
+    'assets/images/planets/planet_2.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +78,10 @@ class _MainMenuState extends State<MainMenu> {
               child: IconButton(
                 icon: Icon(Icons.arrow_left),
                 onPressed: () {
-                  // Add level change
+                  // level change
+                  setState(() {
+                    selectedPlanetIndex = (selectedPlanetIndex - 1) % planetAssets.length;
+                  });
                 },
               ),
             ),
@@ -86,9 +96,23 @@ class _MainMenuState extends State<MainMenu> {
               child: IconButton(
                 icon: Icon(Icons.arrow_right),
                 onPressed: () {
-                  // Add level change
+                  //level change
+                  setState(() {
+                    selectedPlanetIndex = (selectedPlanetIndex + 1) % planetAssets.length;
+                  });
                 },
               ),
+            ),
+          ),
+
+          // Planet Image
+          Positioned(
+            top: MediaQuery.of(context).size.height / 2 - 90,
+            left: MediaQuery.of(context).size.width / 2 - 90,
+            child: Image.asset(
+              planetAssets[selectedPlanetIndex],
+              width: 200,
+              height: 200,
             ),
           ),
 

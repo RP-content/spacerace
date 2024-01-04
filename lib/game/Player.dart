@@ -49,8 +49,12 @@ class Player extends MoveableObject {
     print(tryda);
   }
 
+  late AnimationController _fireController;
+  late Animation<double> _fireAnimation;
+
   Player() {
     collision = SphereCollision(this, size * 0.3);
+
   }
 
   @override
