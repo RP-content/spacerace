@@ -1,8 +1,16 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
+import 'package:spacerace/game/CollisionShape.dart';
+import 'package:spacerace/game/GameControler.dart';
+import 'package:spacerace/game/Vector2D.dart';
+
 abstract class GameObject{
-  double _x=0,_y=0;
+  CollisionShape? collision;
+  double _x = 0, _y = 0;
   late Image texture;
+  Vector2D get position {return Vector2D(_x, _y);}
+
 
   double getX(){
     return _x;
@@ -19,9 +27,20 @@ abstract class GameObject{
     _x = nx;
   }
 
+  void setPosition(Vector2D pos){
+    setX(pos.getX());
+    setY(pos.getY());
+  }
+  Vector2D getPosition(){
+    return Vector2D(getX(),getY());
+  }
+
   void start();
   void update(double delta);
   void end();
+  Widget getGraphics();
 
-
+  void destroy(){
+    GameController().loadedLevel?.removeObject(this);
+  }
 }

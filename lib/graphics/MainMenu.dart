@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:spacerace/game/GameControler.dart';
+import 'package:spacerace/graphics/Game.dart';
 import 'package:get/get.dart';
 import 'customize_menu.dart';
 
@@ -94,7 +96,10 @@ class _MainMenuState extends State<MainMenu> {
               ignoring: isConfiguring,
               child: ElevatedButton(
                 onPressed: () {
-                  // Add your start game button action here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GameFrame()),
+                  );
                 },
                 child: Text('startGame'.tr, style: TextStyle(color: Colors.white)),
               ),
