@@ -15,7 +15,7 @@ class CustomizeShip extends StatefulWidget {
 
 class _CustomizeShipState extends State<CustomizeShip> {
 
-  int selectedFireType = 0;
+  static int selectedFireType = 0;
   static int selectedShipDesign = 0;
 
 
@@ -28,6 +28,13 @@ class _CustomizeShipState extends State<CustomizeShip> {
     'assets/images/ships/ship_E.png',
     'assets/images/ships/ship_F.png',
   ];
+
+  // List of ship design images
+  List<String> fireDesigns = [
+    'assets/images/ships/effect_purple.png',
+    'assets/images/ships/effect_yellow.png',
+  ];
+
 
 
 
@@ -64,6 +71,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
                     // Fire Type Column (Left)
                     Container(
                       width: 120.0,
@@ -71,6 +79,43 @@ class _CustomizeShipState extends State<CustomizeShip> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                          Expanded(
+                            child: ListView.builder(
+                              itemCount: fireDesigns.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      /*selectedShipDesign = index;
+                                      Player.exampleImp(selectedShipDesign);
+                                      print(index); */
+                                      selectedFireType = index;
+                                      Player.getFire(fireDesigns[selectedFireType]);
+                                    });
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        fireDesigns[index],
+                                        width: 80,
+                                        height: 80,
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: selectedFireType == index ? Colors.blue : Colors.transparent,
+                                            width: 2.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          )
                           // Add fire type selection
                         ],
                       ),
@@ -104,9 +149,11 @@ class _CustomizeShipState extends State<CustomizeShip> {
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      selectedShipDesign = index;
+                                      /*selectedShipDesign = index;
                                       Player.exampleImp(selectedShipDesign);
-                                      print(index);
+                                      print(index); */
+                                      selectedShipDesign = index;
+                                      Player.getShip(shipDesigns[selectedShipDesign]);
                                     });
                                   },
                                   child: Padding(
