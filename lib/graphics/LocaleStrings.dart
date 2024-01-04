@@ -1,9 +1,9 @@
-import 'package:get/get.dart';
-import 'package:spacerace/game/GameControler.dart';
+import 'package:get/get.dart';//change of language
 
+
+//made by Juan Tirado
 class LocaleStrings extends Translations{
   @override
-  // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
 
     'en_US':{
@@ -17,6 +17,7 @@ class LocaleStrings extends Translations{
       'sound' : 'Sound',
       'language' : 'Language',
       'exitGame' : 'Exit Game',
+      'aboutUs' : 'About Us'
     },
     'de_DE':{
       'earned' : 'Earned: ',
@@ -29,6 +30,7 @@ class LocaleStrings extends Translations{
       'sound' : 'Ton',
       'language' : 'Sprache',
       'exitGame' : 'Spiel beenden',
+      'aboutUs' : 'Über uns'
     }
   };
 

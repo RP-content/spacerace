@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:spacerace/game/GameControler.dart';
-import 'package:spacerace/game/Player.dart';
-import 'package:spacerace/game/GameControler.dart';
+import 'package:get/get.dart'; //change of language
+import 'package:spacerace/game/GameControler.dart';// get earned value
+import 'package:spacerace/game/Player.dart'; //change ship appearance
+
+//made by Juan Tirado
 
 class CustomizeShip extends StatefulWidget {
   const CustomizeShip({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                'earned'.tr + '${GameController().score}', // Replace with your actual amount
+                'earned'.tr + '${GameController().score}',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -69,7 +70,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('fireTypes'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                          // Add your fire types selection widgets here
+                          // Add fire type selection
                         ],
                       ),
                     ),
@@ -94,7 +95,7 @@ class _CustomizeShipState extends State<CustomizeShip> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text('shipDesigns'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                          // Add your ship designs selection widgets here
+                          // Add ship designs
                           Expanded(
                             child: ListView.builder(
                               itemCount: shipDesigns.length,

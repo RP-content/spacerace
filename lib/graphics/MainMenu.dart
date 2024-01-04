@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:spacerace/game/GameControler.dart';
-import 'package:spacerace/graphics/Game.dart';
-import 'package:get/get.dart';
-import 'customize_menu.dart';
+import 'package:flutter/services.dart';//used to exit the app
+import 'package:spacerace/graphics/Game.dart';//used for accessing the game with button
+import 'package:get/get.dart';//Change of language
+import 'customize_menu.dart';// used for accessing customize menu
+import 'About.dart';//About us
 
-
+//Made by Juan Tirado
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
 
@@ -16,7 +16,7 @@ class MainMenu extends StatefulWidget {
 
 class _MainMenuState extends State<MainMenu> {
   bool isConfiguring = false;
-  double musicVolume = 0.5; // Initial volume values (adjust as needed)
+  double musicVolume = 0.5; // Initial volume values
   double soundVolume = 0.5;
 
   @override
@@ -61,22 +61,6 @@ class _MainMenuState extends State<MainMenu> {
               )
           ),
 
-          // Money Display
-         /* Positioned(
-            top: 16.0,
-            left: 16.0,
-            child: Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text(
-                'earned'.tr + '${GameController().score}', // Replace with your actual amount
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ), */
 
           // Level Change Triangles (Left)
           Positioned(
@@ -87,7 +71,7 @@ class _MainMenuState extends State<MainMenu> {
               child: IconButton(
                 icon: Icon(Icons.arrow_left),
                 onPressed: () {
-                  // Add your level change action here
+                  // Add level change
                 },
               ),
             ),
@@ -102,7 +86,7 @@ class _MainMenuState extends State<MainMenu> {
               child: IconButton(
                 icon: Icon(Icons.arrow_right),
                 onPressed: () {
-                  // Add your level change action here
+                  // Add level change
                 },
               ),
             ),
@@ -163,7 +147,7 @@ class _MainMenuState extends State<MainMenu> {
           ),
 
 
-          // Configuration Buttons (displayed conditionally)
+          // Configuration Buttons
           if (isConfiguring)
             Center(
               child: Column(
@@ -171,7 +155,7 @@ class _MainMenuState extends State<MainMenu> {
                 children: [
                   // Music Slider
                   Container(
-                    width: 200.0, // Adjust the width as needed
+                    width: 200.0,
                     child: Column(
                       children: [
                         Text('music'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
@@ -180,7 +164,7 @@ class _MainMenuState extends State<MainMenu> {
                           onChanged: (value) {
                             setState(() {
                               musicVolume = value;
-                              // Update your music volume based on the 'value'
+                              // Update music value
                             });
                           },
                           min: 0.0,
@@ -194,7 +178,7 @@ class _MainMenuState extends State<MainMenu> {
 
                   // Sound Slider
                   Container(
-                    width: 200.0, // Adjust the width as needed
+                    width: 200.0, // Adjust the width
                     child: Column(
                       children: [
                         Text('sound'.tr, style: TextStyle(fontSize: 16.0, color: Colors.white)),
@@ -203,7 +187,7 @@ class _MainMenuState extends State<MainMenu> {
                           onChanged: (value) {
                             setState(() {
                               soundVolume = value;
-                              // Update your sound volume based on the 'value'
+                              //update sound value
                             });
                           },
                           min: 0.0,
@@ -214,6 +198,19 @@ class _MainMenuState extends State<MainMenu> {
                     ),
                   ),
                   SizedBox(height: 16.0),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      // Navigate to CustomizeShip screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AboutUsPage() ),
+                      );
+                    },
+                    child: Text('aboutUs'.tr, style: TextStyle(color: Colors.white)),
+                  ),
+                  SizedBox(height: 16.0),
+
 
                   // Language Button
                   ElevatedButton(

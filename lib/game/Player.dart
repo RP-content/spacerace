@@ -7,16 +7,17 @@ import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/MovableObject.dart';
 import 'package:spacerace/game/SphereCollision.dart';
 import 'package:spacerace/game/Vector2D.dart';
-import 'package:flame/particles.dart';
-import 'package:flame/components.dart';
+
+
 
 class Player extends MoveableObject {
   double speed = 1.5;
   bool slow = false;
   double size = 2.0;
-  static int spaceSelection = 4;
-  static String spaceType = 'assets/images/ships/ship_E.png';
+  static int spaceSelection = 1;
+  static String spaceType = 'assets/images/ships/ship_A.png';
 
+  //Method by Juan Tirado
   static void exampleImp(int tryda) {
     spaceSelection = tryda;
     switch (spaceSelection) {
@@ -117,3 +118,6 @@ class Player extends MoveableObject {
   }
 
 }
+
+
+

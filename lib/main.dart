@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart'; //game orientation, fullscreen,etc
 
-import 'package:spacerace/graphics/MainMenu.dart';
+import 'package:spacerace/graphics/MainMenu.dart'; // for accessing main menu
 
-import 'package:get/get.dart';
-import 'package:spacerace/graphics/LocaleStrings.dart';
+import 'package:get/get.dart';//change of language
+import 'package:spacerace/graphics/LocaleStrings.dart';// data of languages
 void main() {
   runApp(const Game());
 }

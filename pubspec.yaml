@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flame:
+  flame: 1.0.0
   intl: any
   intl_translation: ^0.18.1
   flutter_localizations:
