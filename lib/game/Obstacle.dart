@@ -11,13 +11,17 @@ import 'Vector2D.dart';
 
 class Obstacle extends GameObject {
   List<String> variants = [
-    'assets/images/stone1_1.png',
-    'assets/images/cactus1_1.png',
+    'assets/images/smallObjects/stone1_1.png',
+    'assets/images/smallObjects/stone2_1.png',
+    'assets/images/smallObjects/stone3_1.png',
+    'assets/images/smallObjects/stone4_1.png',
+    'assets/images/middleObjects/cactus1_1.png',
+    'assets/images/middleObjects/cactus2_1.png',
   ];
   late int selected;
   double size;
   Obstacle(this.size,[Vector2D? pos]){
-    selected = Random(85).nextInt(variants.length);
+    selected = Random().nextInt(variants.length);
     collision = SphereCollision(this, size*0.4, collected);
     if(pos != null){
       setPosition(pos);

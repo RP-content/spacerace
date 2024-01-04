@@ -29,7 +29,7 @@ class Level{
 
   Level(){
     player = Player();
-    addObject(player);
+    //addObject(player);
     player.start();
     print("width:$widths, height:$height");
   }
@@ -37,13 +37,21 @@ class Level{
   Random rand = Random();
   double time = 5;
   void update(double delta){
-    for (var element in objects) {element.update(delta);}
+    player.update(delta);
+    offset = Vector2D(player.getX()-widths *0.4, 0);
+
+    for (var element in objects) {
+      element.update(delta);
+      if(element.getX()+4<offset.getX()){
+        removeObject(element);
+        print("$element removed because of Position");
+      }
+    }
     for (var element in removing) {
       element.end();
       objects.remove(element);
     }
     removing.clear();
-    offset = Vector2D(player.getX()-widths *0.4, 0);
     time += delta;
     if(time > 5){
       time = 0;
