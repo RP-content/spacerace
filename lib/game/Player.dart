@@ -11,7 +11,7 @@ import 'package:spacerace/game/Vector2D.dart';
 
 
 class Player extends MoveableObject {
-  double speed = 2;
+  double speed = 2.5;
   bool slow = false;
   double size = 2.0;
   static int spaceSelection = 1;

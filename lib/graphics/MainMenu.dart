@@ -96,6 +96,7 @@ class _MainMenuState extends State<MainMenu> {
                   // level change
                   setState(() {
                     selectedPlanetIndex = (selectedPlanetIndex - 1) % planetAssets.length;
+                    GameController().planet = selectedPlanetIndex;
                   });
                 },
               ),

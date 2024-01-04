@@ -29,12 +29,14 @@ class Hindrance extends GameObject{
     switch(GameController().planet){
       case 0:
         variant = variant1;
+        size = size *1.5;
       case 1:
         variant = variant2;
+        size = size *0.6;
     }
     selected = Random().nextInt(variant.length);
 
-    collision = SphereCollision(this, size*0.4,collected);
+    collision = SphereCollision(this, size*0.3,collected);
     if(pos != null){
       setPosition(pos);
     }

@@ -31,9 +31,10 @@ class Obstacle extends GameObject {
         variant = variant1;
       case 1:
         variant = variant2;
+        size = size *1.5;
     }
     selected = Random().nextInt(variant.length);
-    collision = SphereCollision(this, size*0.4, collided);
+    collision = SphereCollision(this, size*0.3, collided);
     if(pos != null){
       setPosition(pos);
     }
