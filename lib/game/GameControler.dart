@@ -19,15 +19,19 @@ class GameController{
   }
 
   GameController._intern(){
-    updates = Timer.periodic(const Duration(milliseconds: 17), (timer) {gameloop();});
+    updates = Timer.periodic(const Duration(milliseconds: 20), (timer) {gameloop();});
   }
 
   void gameloop(){
     if(GameState.RUNNING == gameState){
-      loadedLevel?.update(0.017);
+      loadedLevel?.update(0.02);
       frameUpdater?.call();
       //print("loop");
     }
+  }
+
+  void backToMenu(){
+    gameState = GameState.MENU;
   }
 
   void loadLevel(){

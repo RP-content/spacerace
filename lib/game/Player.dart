@@ -27,6 +27,11 @@ class Player extends MoveableObject{
   @override
   void update(double delta) {
     move(Vector2D(getX()+delta*speed,getY()));
+    GameController().loadedLevel?.objects.forEach((element) {
+      if(!GameController().loadedLevel!.removing.contains(element)){
+        element.collision?.isColliding(collision!);
+      }
+    });
   }
 
   void touchInput(Offset offset){

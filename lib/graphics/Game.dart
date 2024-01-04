@@ -31,6 +31,12 @@ class _GameFrameState extends State<GameFrame> {
     );
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    GameController().backToMenu();
+    super.dispose();
+  }
   void updateState(){
     setState(() {});
   }
