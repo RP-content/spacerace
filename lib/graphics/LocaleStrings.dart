@@ -1,7 +1,8 @@
 import 'package:get/get.dart';//change of language
 
 
-//made by Juan Tirado
+///made by Juan Tirado
+///Just Maps that have stored the different languages. They are then called through main.dart
 class LocaleStrings extends Translations{
   @override
   Map<String, Map<String, String>> get keys => {

@@ -7,8 +7,9 @@ import 'LooseScreen.dart';
 import 'customize_menu.dart';// used for accessing customize menu
 import 'About.dart';//About us
 
-//Made by Juan Tirado
-//main menu. Also includes the options menu
+///made by Juan Tirado and Edwin Khirsivara
+///main menu. Also includes the options menu
+///A simple menu that has the buttons necessary to navigate through the different sides of the game
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
 
