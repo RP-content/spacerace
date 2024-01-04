@@ -28,7 +28,7 @@ class Obstacle extends GameObject {
     }
   }
   void collected() {
-    destroy();
+
   }
 
   @override

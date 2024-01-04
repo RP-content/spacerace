@@ -32,7 +32,6 @@ class GameController{
     if(GameState.RUNNING == gameState){
       loadedLevel?.update(0.02);
       frameUpdater?.call();
-      //print("loop");
     }
   }
 

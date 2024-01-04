@@ -3,16 +3,10 @@ import 'package:spacerace/game/GameObject.dart';
 import 'package:spacerace/game/Vector2D.dart';
 
 abstract class MoveableObject extends GameObject{
-  void move(Vector2D dest){
-    setX(dest.getX());
-    setY(dest.getY());
-    /*if(collision != null){
-      GameController().loadedLevel?.objects.forEach((element) {
-        if(!GameController().loadedLevel!.removing.contains(element)){
-          element.collision?.isColliding(collision!);
-        }
-      });
-    }*/
+  void move(Vector2D delta){
+    GameController().loadedLevel!.movement+=delta.getX();
+    setX(getX()+delta.getX());
+    setY(getY()+delta.getY());
   }
 
 }

@@ -1,8 +1,6 @@
 
 import 'dart:math';
 import 'dart:ui';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:spacerace/game/Gem.dart';
 import 'package:spacerace/game/Hindrance.dart';
@@ -35,8 +33,15 @@ class Level{
   }
 
   Random rand = Random();
+  double movement = 0;
+
   void update(double delta){
     player.update(delta);
+    if(player.getY()<0){
+      player.setY(0);
+    }else if(player.getY()>10){
+      player.setY(10);
+    }
     offset = Vector2D(player.getX()-widths *0.4, 0);
 
     for (var element in objects) {
@@ -51,17 +56,18 @@ class Level{
       objects.remove(element);
     }
     removing.clear();
-    //print(offset.getX()%2);
-    if(offset.getX()%2 < 0.02){
 
-      for(int i = 0; i<3;i++){
-        if(rand.nextInt(100)<30){
-          addObject(Hindrance(rand.nextDouble()*3+2,Vector2D(player.getX()+20, rand.nextDouble()*10)));
-        }
-      }
+    if(movement > 2){
+      print("spawn objects");
+      movement-=2;
       for(int i = 0; i<2;i++){
         if(rand.nextInt(100)<25){
-          addObject(Obstacle(rand.nextInt(3)+1.5,Vector2D(player.getX()+20, rand.nextDouble()*10)));
+          addObject(Hindrance(rand.nextDouble()*3+2,Vector2D(player.getX()+20+(rand.nextDouble()-.5), rand.nextDouble()+rand.nextInt(10))));
+        }
+      }
+      for(int i = 0; i<1;i++){
+        if(rand.nextInt(100)<20){
+          addObject(Obstacle(rand.nextDouble()*3+1.5,Vector2D(player.getX()+20+rand.nextDouble()-.5, rand.nextDouble()+rand.nextInt(10))));
         }
       }
       addObject(Gem(Vector2D(player.getX()+20, rand.nextDouble()*10)));
@@ -80,6 +86,7 @@ class Level{
   Alignment getAlignmentFromPosition(double x, double y){
     return Alignment(((x-offset.getX())/widths*2)-1, ((y-offset.getY())/height*2)-1);
   }
+
   double getLogicUnitFromPosition(double d){
     return d * inputFactor;
   }

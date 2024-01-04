@@ -11,7 +11,7 @@ import 'package:flame/particles.dart';
 import 'package:flame/components.dart';
 
 class Player extends MoveableObject {
-  double speed = 1.5;
+  double speed = 2;
   bool slow = false;
   double size = 2.0;
   static int spaceSelection = 4;
@@ -22,26 +22,16 @@ class Player extends MoveableObject {
     switch (spaceSelection) {
       case 0:
         spaceType = 'assets/images/ships/ship_A.png';
-
       case 1:
         spaceType = 'assets/images/ships/ship_B.png';
-
-
       case 2:
         spaceType = 'assets/images/ships/ship_C.png';
-
-
       case 3:
         spaceType = 'assets/images/ships/ship_D.png';
-
-
       case 4:
         spaceType = 'assets/images/ships/ship_E.png';
-
-
       case 5:
         spaceType = 'assets/images/ships/ship_F.png';
-
       default:
         print('Error changing space asset');
     }
@@ -65,9 +55,9 @@ class Player extends MoveableObject {
   @override
   void update(double delta) {
     if(slow){
-    move(Vector2D(getX() + delta * speed*.3, getY()));
+    move(Vector2D(delta * speed*.3, 0));
     }else{
-      move(Vector2D(getX() + delta * speed, getY()));
+      move(Vector2D(delta * speed,0));
     }
     slow = false;
     GameController().loadedLevel?.objects.forEach((element) {
@@ -79,9 +69,9 @@ class Player extends MoveableObject {
 
   void touchInput(Offset offset) {
     if(slow){
-      move(Vector2D(getX(), offset.dy*.1 + getY()));
+      move(Vector2D(0, offset.dy*.1));
     }else{
-      move(Vector2D(getX(), offset.dy + getY()));
+      move(Vector2D(0, offset.dy));
     }
 
   }

@@ -17,9 +17,9 @@ class _GameFrameState extends State<GameFrame> {
 
   @override
   void setState(VoidCallback fn) {
+    super.setState(fn);
     list = List.from(instance.loadedLevel!.objects.map((e) => e.getGraphics()));
     list.add(GameController().loadedLevel!.player.getGraphics());
-    super.setState(fn);
   }
 
   @override
@@ -41,7 +41,7 @@ class _GameFrameState extends State<GameFrame> {
             "Score: ${GameController().score}",
         ),
       ),
-      backgroundColor: Color(0xFFFDF413),
+      backgroundColor: Color(0xFFFDF315),
       body: GestureDetector(
         child: Stack(
           children: list,
@@ -54,12 +54,12 @@ class _GameFrameState extends State<GameFrame> {
 
   @override
   void dispose() {
-    Navigator.push(
+    super.dispose();
+    /*Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => LooseScreen()),
-    );
+    );*/
     GameController().backToMenu();
-    super.dispose();
   }
   void updateState(){
     setState(() {});
