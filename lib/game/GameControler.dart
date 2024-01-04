@@ -14,6 +14,7 @@ class GameController{
   Level ?loadedLevel;
   Function ?frameUpdater;
   int design = 0;
+  int score = 0;
 
   factory GameController(){
     return _instance;
